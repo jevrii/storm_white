@@ -74,6 +74,13 @@ $$
 !!! important "General convergence condition"
     The standard convergence condition **(for any iterative method)** is when the norm of the iteration matrix (i.e. $||D^{-1}R||$) is less than $1$.
 
+    ??? question "Proof"
+        $e^{(k+1)} = X^{(k+1)} - X^* = D^{-1}b - D^{-1}Rx^{(k)}-X^*$
+
+        $(D+R)X^* = b \implies X^* = D^{-1}b - D^{-1}RX^*$
+
+        $e^{(k+1)} = X^{(k+1)} - X^* = D^{-1}R\left(X^* - X^{(k)}\right) = D^{-1}R \cdot e^{(k)} \implies e^{(k+1)} = (D^{-1}R)^{k+1} \cdot e^{(0)}$
+
 !!! important "Strictly diagonally dominant case"
     If the matrix $A$ is **strictly diagonally dominant (i.e. $|a_{ii}| > \sum_{j \neq i}|a_{ij}|)$** (for all rows the absolute value of the diagonal element in a row is strictly greater than than the sum of absolute value of the rest of the elements in that row.), the iterative method is guaraneed to converge.
 
