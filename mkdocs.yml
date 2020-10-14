@@ -1,6 +1,13 @@
-site_name: My Docs
+site_name: storm_white
+repo_url: https://github.com/jevrii/storm_white
+repo_name: jevrii/storm_white
 theme:
   name: material
+  palette:
+    primary: blue grey
+    accent: indigo
+  icon:
+    logo: material/heart
   features:
   - tabs
   - navigation.tabs
