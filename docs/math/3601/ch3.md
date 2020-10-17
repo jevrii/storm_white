@@ -44,7 +44,9 @@ Matrix norm induced by a given vector norm:
     - inf-norm is max row sum of abs elements
     - 2-norm is sqrt of largest eigenvalue of $A^TA$
 
-Condition number: $\frac{||\delta x||}{||x||} \leq ||A||||A^{-1}||\frac{||\delta b||}{||b||}$ (smaller is better)
+Bound on relative error: $\frac{||\delta x||}{||x||} \leq ||A||||A^{-1}||\frac{||\delta b||}{||b||}$ (smaller is better)
+
+Condition number: $||A||||A^{-1}||$ (smaller is better)
 
 ??? Derivation
 
