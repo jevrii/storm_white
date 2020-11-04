@@ -113,7 +113,7 @@ All points in the convex hull -> includes both deterministic and randomized deci
 Risk set must be convex
 
 - Admissible rules: lower-left boundary of risk set
-- Minimax: Moving the "right angle" $\max(x, y) = c$ until it touches the risk set. In some cases, draw a line $R(\theta_1, d) = R(\theta_2, d)$ and find the intersection with the lower boundary, but **this doesn't always work**.
+- Minimax: Moving the "right angle" $\max(x, y) = c$ until it touches the risk set. In **some (not always work)** cases, draw a line $R(\theta_1, d) = R(\theta_2, d)$ and find the intersection with the lower boundary.
 - Unbiased rule: Nil (not using the diagram _alone_). Because the risk set only tells us the risk function, but the definition of unbiased rules requires formulae outside of the risk function.
 - Bayes rule (w.r.t prior $\pi(\theta_1) = \pi_1, \pi(\theta_2) = \pi_2$): Push a line $\pi_1 R(\theta_1, d) + \pi_2 R(\theta_2, d) = c$. Minimize $c$ such that it is still touching the risk set.
 
