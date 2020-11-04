@@ -50,7 +50,20 @@ However, polynomials are **rigid** and may create problems at boundaries (Re: Ru
 
     Let $w(t) = \prod^n_{i=0} (t-x_i)$, $\phi(t) \equiv f(t) - p(t) + \lambda w(t)$, where $\phi(x) = 0$ and $\lambda = \frac{f(x)-p(x)}{w(x)}$
 
-    TODO
+    $\phi \in C^{n+1}[a, b]$, and $\phi$ vanishes at the $n+2$ points $x, x_0, x_1, \cdots, x_n$. 
+
+    By Mean-Value Theorem, $\phi'$ has at least $n+1$ distinct zeros in $[a, b]$ (one zero in $\phi'$ between each original zero in $phi$)
+
+    Similarly, $\phi''$ has at least $n$ distinct zeros in (a, b).
+
+    Eventually, $\phi^{(n+1)}$ has at least one zero, say $\eta_x$ in $(a, b)$.
+
+    Now $w^{(n+1)}(t)$ = \frac{d^{n+1}}{dt^{n+1}}\prod^n_{i=1}(t-x_i) = (n+1)!$ (polynomial in $t$)
+
+    $\phi^{(n+1)} = f^{(n+1)} - p^{(n+1)} - \lambda w^{(n+1)} = f^{(n+1)} - (n+1)!\lambda$ ($p$ has degree at most $n$)
+
+    Lastly, $0 = \phi^{(n+1)}(\eta_x) = f^{(n+1)}(\eta_x) - (n+1)!\frac{f(x)-p(x)}{w(x)}$
+
 
 !!! note "Wolfram alpha command"
     ```
