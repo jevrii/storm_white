@@ -185,8 +185,54 @@ Checking spline: Left hand and right hand limit of value and derivatives are con
 
     Use continuity conditions for $S'$ at the interior knots $t_i$: $S_{i-1}^{'}(t_i) = S_{i}^{'}(t_i)$
 
-
+    TODO
 
 !!! important "Theorem (Optimality of Natural Cubic Spline)"
+    Let $f^{''}$ be continuous on $[a, b]$ and let $a = t_0 < t_1 < \cdots < t_n = b$. If $S$ is the natural cubic spline interpolating $f$ at the knots $t_i$, then $\int^b_a{[S^{''}(x)]^2} dx \leq \int^b_a{[f^{''}(x)]^2} dx$
+
+??? question "Proof"
+    Let $g \equiv f-S$.
+
+    $(f^{''})^2 = (S^{''} + g^{''})^2 = (S^{''})^2 + (g^{''})^2 + 2S^{''}g^{''}$
+
+    $\int^a_b{(f^{''})^2}dx = \int^a_b{(S^{''})^2}dx + \int^a_b{(g^{''})^2}dx + \int^a_b{2S^{''}g^{''}}dx$
+
+    Note that $\int^a_b{(g^{''})^2}dx \geq 0$. So to prove the inequality, we can choose to show that $\int^a_b{2S^{''}g^{''}}dx \geq 0$.
+    
+    Idea: Integration by parts
+
+    $\int^a_b{2S^{''}g^{''}}dx = \sum^n_{i=1}{\int^{t_{i}}_{t_{i-1}}{2S^{''}g^{''}}dx} = \sum^n_{i=1}{S^{''}g^{'}(t_i) - {S^{''}g^{'}(t_{i-1}) - \int^{t_{i}}_{t_{i-1}}{2S^{'''}g^{'}}dx}$
+
+    TODO
 
 ## Function approximation
+
+### Least squares
+
+$$
+\begin{align*}
+X\beta = Y \\
+\hat{\beta} = (X^TX)^{-1}X^Ty
+\end{align*}
+$$
+
+### Function approximation over interval
+
+!!! example
+    Let $f(x) = e^x$, let $p(x) = \alpha_0 + \alpha_1x$. Approximate $f(x)$ over $[-1, 1]$. 
+
+    So choose $\alpha_0, \alpha_1$ to minimize $g(\alpha_0, \alpha_1) = \int_{-1}^1{[e^x - \alpha_0 - \alpha_1]^2 dx}$
+
+    $0 = \frac{\partial g}{\partial \alpha_0} = 2 \int_{-1}^1{[e^x - \alpha_0 - \alpha_1] (-1)} dx$
+
+    $0 = \frac{\partial g}{\partial \alpha_0} = 2 \int_{-x}^1{[e^x - \alpha_0 - \alpha_1] (-1)} dx$
+
+    Solving gives $2\alpha_0 = e-e^{-1}$, $\frac{2}{3}\alpha_1 = 2e^{-1}$.
+
+#### Gram-Schmidt process
+
+Something related to orthogonal functions...
+
+E.g. Orthogona function: Fourier series
+
+TODO
