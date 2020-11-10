@@ -71,7 +71,7 @@ Can also use this tet to test for the median of a symmetric distribution based o
     # pval.twosided = 2*min(pval.upper, pval.lower)
     ```
 
-### Large sample approximation of Wilcoxon signed-rank statistic $SR_+$
+### Large sample approximation of Wilcoxon signed-rank statistic SR+
 
 Under H0, indicator of sign of $D$ follows $Ber(0.5)$.
 
@@ -95,7 +95,59 @@ In case of ties, use average rank of tied observations.
 
 ## Randomized Complete Block Design (RBCD)
 
-### Page’s Test for Ordered Alternatives for RCB Designs
+Apply different treatment to each person in each block. Each block contains similar people.
+
+$X_{ij} = \mu + t_i + b_j + \epsilon_{ij}$
+
+Test between $H_0: t_1 = \cdots = t_k$ vs $H_1$: Not all $t_i$ are the same.
+
+When $\epsilon \tilde N(\mu, \sigma^2)$, we can carry out the $F$-test using the $F$ statistic: $F = \frac{MSB}{MSE} = \frac{SSB/(k-1)}{SSE/[(k-1)(b-1)]}$
+
+### Permutation F-test for RCB designs
+
+- Compute the F statistic $F_{obs}$ using the observed data
+- Permute the observations within each block. There are $(k!)^b$ permutations.
+- Compute the F statistic for each possible permutation.
+- Calculate the p-value as the fraction of $F$'s $geq$ $F_{obs}$
+
+Alternatively, we can also use SSB or SSX for the test statistic.
+
+### Friedman's test for RCB design (SSB on ranks)
+
+Test on SSB on ranks. rank within each block.
+
+$$
+FM = \frac{12b}{k(k+1)} \sum^k_{i=1}(\bar{R_{i+} - \frac{k+1}{2}})^2
+$$
+
+- For large samples, $FM \to \chi^2(k-1)$ under $H_0$.
+- For $k=2$, Friedman test is equivalent to two-sided Wilcoxon signed rank test. (pair is also a block)
+- Can obtain exact p-value from permutation method.
+
+!!! note "Adjustment for ties"
+    $$
+    FM_{ties} = \frac{b}{\frac{1}{b}\sum^b_{j=1}S^2_{Bj}} \sum^k_{i=1}\left(\bar{R_{i+}} - \frac{k+1}{2}\right)^2
+    $$
+
+**Multiple comparisons based on Friedman Statistic for Large Samples (Re: HSD)**
+
+$$
+|\bar{R_{i+}} - \bar{R_{j+}}| \geq q(\alpha, k, \infty)\sqrt{\frac{\frac{1}{b}\sum^b_{j=1}S^2_{Bj}}{b}}
+$$
+
+## Page’s Test for Ordered Alternatives for RCB Designs
+
+Let $R_{i+} = b\bar{R_{i+}}$ be the sum ranks for the $i$'th treatment.
+
+$$
+PG = \sum^k_{i=1} iR_{i+}
+$$
+
+Amplify the large rank sums.
+
+- For $H_1: t_1 \leq \cdots t_k$, $PG$ tends to be large. For $H_1: t_1 \geq \cdots t_k$, $PG$ tends to be small.
+- Large sample approximation: $E(PG) = \frac{bk(k+1)^2}{4}, Var(PG) = \frac{k(k^2-1)}{12}\sum^b_{j=1}S^2_{Bj}$
+- Page's test will have greater power to detect difference than Friedman's test if the ordering among treatments is correct.
 
 ??? example
 
@@ -161,7 +213,11 @@ In case of ties, use average rank of tied observations.
     cor(1:4, ranksumvec)
     ```
 
-### Cochran’s Q Test (Friedman’s test with ties for 0/1 responses)
+## Special cases of Friedman's test
+
+### Cochran's Q Test (Friedman's test with ties for 0/1 responses)
+
+Equivalent to Friedman's test.
 
 ??? example
     ```r
@@ -176,7 +232,11 @@ In case of ties, use average rank of tied observations.
     friedman.test(x, grps, blocks)  
     ```
 
-###  Kendall’s W Test (Test for agreements among judges)
+###  Kendall's W Test (Test for agreements among judges)
+
+Agreement: Judges are the **blocks**, interns are the **treatments**. 
+
+In other words, the interns can be distinguished well.
 
 ??? example
     ```r
