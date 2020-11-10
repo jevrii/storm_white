@@ -1,6 +1,40 @@
 # Chapter 4: Paired Comparisons and Block Designs
 
+## Paired comparisons
+
+Paired data can be found in the following situations:
+
+- Two measurements obtained from the same subject under two different conditions
+- Two measurements obtained from matched pairs
+
+### Parametric method: Paired t-test
+
+Perform $t$-test on the difference data $X_i - Y_i$. $t=\frac{\bar{D}}{S_D/\sqrt{n}}$
+
+### Paired comparison permutation test
+
+1. Compute the sample mean of differences $D_i = X_i - Y_i$ for each pair of observed data, denoted by $\bar{D_{obs}}$.
+2. Obtain the $2^n$ possible assignments (or a random sample of $R$ assignments) of plus and minus signs to the $|D_i|$'s.
+3. Compute $\bar{D}$ for each possible assignment
+4. Calculate the $p$-value as the fraction of $\bar{D} \geq \bar{D_{obs}}$
+
+### Binomial (sign) test for paired samples
+
+Apply binomial tet to the difference data $D_i$, test if population median of $D=0$. (refer to Chapter 1)
+
+Issue: Discard a lot of information of the data, only take into acount the direction of the difference, but not the magnitude.
+
 ### Wilcoxon signed-rank test for paired samples
+
+- Rank the absolute values of the differences $|D_i|$
+- Re-attach the rank of $|D_i|$ by the sign ($+, 0, -$) of $D_i$
+- Apply the permutation test on the sum of positive signed ranks, $SR_+$ or the average of signed ranks $\bar{SR}$
+
+Assumption: $D_i$ are iid from a continuous cdf $F$ with median $\theta$, and its pdf $f$ is symmetric about $\theta$.
+
+Signed-rank test more powerful in asymmetric case.
+
+Can also use this tet to test for the median of a symmetric distribution based on a single sample.
 
 ??? example
 
@@ -37,7 +71,13 @@
     # pval.twosided = 2*min(pval.upper, pval.lower)
     ```
 
-### Large sample approximation of Wilcoxon signed-rank statistic
+### Large sample approximation of Wilcoxon signed-rank statistic $SR_+$
+
+Under H0, indicator of sign of $D$ follows $Ber(0.5)$.
+
+Then $E(SR_+) = \frac{1}{2} \sum^n_{i=1} R_i$, $Var(SR_+) = \frac{1}{4} \sum^n_{i=1} R_i^2$, $\frac{SR_+ - E(SR_+)}{\sqrt{Var(SR_+)}} \tilde N(0, 1)$
+
+In case of ties, use average rank of tied observations.
 
 ??? example
 
@@ -53,7 +93,9 @@
     wilcox.test(x, y, paired=T, correct=TRUE)
     ```
 
-## Page’s Test for Ordered Alternatives for RCB Designs
+## Randomized Complete Block Design (RBCD)
+
+### Page’s Test for Ordered Alternatives for RCB Designs
 
 ??? example
 

@@ -267,7 +267,7 @@ $$
 
 ### Tukey's Honesty Significant Difference (HSD) (largest difference between sample means among all pairs)
 
-**Suppose populations are normally distributed and sample sizes are equal.**
+!!! warning "Suppose populations are normally distributed and sample sizes are equal."
 
 $$
 Q = \max_{i=j}\frac{\sqrt{n}|\bar{X_i} - \bar{X_j}|}{\sqrt{MSE}}
@@ -282,7 +282,7 @@ $$
 - Look up $q$-distribution table
 - Guarntee experiment-wise error rate to be exactly $\alpha$.
 
-!!! note "Unequal sample size: Tukey-Kramer procedure"
+??? note "Unequal sample size: Tukey-Kramer procedure"
     $$
     |\bar{X_i} - \bar{X_j}| \geq q(\alpha, k, df)\sqrt{\frac{MSE}{2}(\frac{1}{n_i} + \frac{1}{n_j})}
     $$
@@ -291,4 +291,61 @@ $$
 
 #### Rank-based Tukey's HSD Procedure for Large Samples
 
+$$
+|\bar{R_i} - \bar{R_j}| \geq q(\alpha, k, \infty)\sqrt{\frac{S^2_R}{n}}
+$$
 
+$df = \infty$ because of large samples. 
+
+??? note "Unequal sample size"
+    $$
+    |\bar{R_i} - \bar{R_j}| \geq q(\alpha, k, df)\sqrt{\frac{S^2_R}{2}(\frac{1}{n_i} + \frac{1}{n_j})}
+    $$
+
+### Tukey's HSD vs Fisher's LSD
+
+- HSD: $H_0$: All pairs are the same
+- LSD: $H_0$: All pairs are the same, $\mu_1 = \mu_2 = \cdots$.
+
+The $H_0$ for LSD spans over a greater space. So the Type I error of LSD will be smaller(?)
+
+Two-step HSD: Evaluate the significance of the one-way ANOVA before proceeding to HSD. Replace $q(\alpha, k, df)$ with $q(\alpha, k-1, df)$.
+
+## Multiple comparison permutation tests
+
+Bonferroni Permutation Tests:
+
+- Perform 2-sample permutation tests (e.g. permutation $t$-test or Wilcoxon rank sum test) on all pairs of treatments and compare the permutation $p$-value for each pair with the significance level $\alpha' = \frac{\alpha}{k(k-1)/2}$
+    - Note that when comparing treatment $i$ to treatment $j$, should re-rank from $[1, n_i+n_j]$.
+- If the $p$-value for one pair is less than $\alpha'$, declare significant difference between this pair of treatments.
+
+Fisher's Protected LSD Permutation Tests:
+
+- Perform a permutation test to test if there is any difference among the $k$ treatments at significance level $\alpha$.
+- Obtain all (or a random sample) of permutations of the data from each pair of treatments. For each permutation, compute $T_{ij}$ for each $ij$ pair.
+- $p$-value for comparing treatment $i, j$ is the fraction of permutations for which $|T_{ij}| \geq T_{ij, obs}$
+
+Tukey's HSD Permutation test
+
+- Obtain all (or a random samplle) of permutation of the data as in the permutation F-test. For each permutation, compute Q.
+- Declare {ij} to e significantly different if $Q_{obs} \geq q*(\alpha)$
+
+## Ordered alternatives: JT test
+
+$H_1: F_1(x) \geq F_2(x) \geq \cdots \geq F_k(x)$
+
+JT statistic: $T=\sum_{i \le j} T_{ij}$, where $T_{ij}$ is Mann-Whitney statistic.
+
+Larger $T$ suppors $H1$.
+
+JT test: Permutation test based on JT statistic:
+
+- Compute $JT_{obs}$ based on the observed data
+- Find all (or a random sample) of the permutations of the data and compute $JT$ for each permutation
+- Compute the $p$-value as the fraction of the permutations for which $JT \geq JT_{obs}$
+
+### Large sample approximation
+
+Use the expected value and variance of the Mann-Whitney statistic...
+
+TODO
