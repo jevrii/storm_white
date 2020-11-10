@@ -121,14 +121,12 @@ Can also perform permutation test based on $SSB = \sum^k_{i=1}n_i(\bar{X_i} - \b
     test may well approximate the permutation F-test.** This is easy to conprehend since **sample
     means will be normally distributed for large samples, according to the Central Limit Theorem.**
 
-## Kruskal-Wallis Test
+## Kruskal-Wallis Test (ANOVA based on ranks)
 
 !!! important "Objective"
     Obtaining a statistic based on **ranks**, similar to Wilcoxcon test.
 
     Approximating permutation test using chi-square, useful for large sample size.
-
-### Kruskal-Wallis statistic
 
 Rank the data combining all treatments. Let $\bar{R_i}$ denote the mean of the ranks of treatment $i$'s observations, assuming the data have no ties.
 
@@ -139,7 +137,10 @@ KW = \frac{12}{N(N+1)}\sum^k_{i=1}n_i\left(\bar{R_i}-\frac{N+1}{2}\right)^2 = \f
 $$
 
 - where $\frac{N+1}{2}$ is the overall mean of all ranks and $\sum^k_{i=1}n_i\left(\bar{R_i}-\frac{N+1}{2}\right)^2$ can be viewed as the $SSB$ on ranks. (recall $SSB = \sum^k_{i=1}n_i(\bar{X_i} - \bar{X})^2$)
-- $\frac{12}{N(N+1)}$ is a constant scaling factor to make the $KW$ statistic to follow **approximately** a chi-square distribution under $H_0$, i.e. $KW \sim \chi^2(k-1)$.
+- $\frac{12}{N(N+1)}$ is a constant scaling factor to make the $KW$ statistic to follow **approximately** a chi-square distribution under $H_0$, i.e. $KW \sim \chi^2(k-1)$. (note that $E[\sum^k_{i=1}n_i\left(\bar{R_i}-\frac{N+1}{2}\right)^2] = \frac{N(N+1)}{12}(k-1)$, we want $E[KW] = k-1$.
+    - $E[\left(\bar{R_i}-\frac{N+1}{2}\right)^2] = Var(\bar{R_i}) + (E[\bar{R_i}] - \frac{N+1}{2})^2 = \frac{1}{n_i^2}\frac{n_i(N-n_i)\sigma^2}{N-1}$
+    - Can get the result from p.20 Expectation and Variance of Wilcoxon statistic. But here we are using average rank instead of rank sum, so divide by ${n_i^2}$
+    - $\sigma = \frac{(N-1)(N+1)}{12}$
 
 The "exact" p-value of the $KW$ test can be obtained by using the permutation method.
 
@@ -192,5 +193,102 @@ Reject when the upper $\alpha$% critical value from the chi-square table is less
     abline(v=KW, lty=2 ,col="red")
     ```
 
-### Adjustment for ties
+!!! note "Adjustment for ties"
+
+    When data are tied, we adjust the ranks using the **mid-ranks** for tied data as we did for the Wilcoxon test. The permutation method can also be applied to the $KW$ statistic.
+
+    However, in order to maintain the chi-square approximation, the $KW$ statistic should be modified:
+
+    $$
+    KW_{ties} = \frac{KW}{1-\frac{\sum^g_{i=1}{(t_i^3-t_i)}}{N^3-N}}
+    $$
+
+    !!! abstract "Code"
+        - If no ties, use `kruskal.test` function in the base `R` installation.
+        - If ties exist, use `kruskal_test` function in the `R` add-on package `coin`.
+
+## Multiple comparisons
+
+We want more details of the differences to know the location of the differences.
+
+Either we do 2-sample tests for each pair, but this will induce higher type I error. (If independent, then $1-0.95^3$)
+
+!!! success "Aim: Control the type-I error while performing pairwise tests"
+
+### Bonferroni Adjustment (union bound)
+
+Use $\alpha_i = \frac{\alpha}{k(k-1)/2}$.
+
+Bonferroni inequality (union bound): $P(E_1 \cup \cdots \cup E_m) \leq P(E_1) + \cdots + P(E_m)$
+
+- Too conservative, high rate of type II error (false negative)
+- Very wide confidence interval
+
+### Fisher's Protected Least Significant Difference (LSD) (use MSE instead of two-sample error in t-test)
+
+1. Perform F-test for equality of means (ANOVA). 
+2. If result of F-test is to accept H0 (all same), then stop.
+3. Perform all pairwise t-tests at significance level $\alpha$.
+
+$$
+|\bar{X_i} - \bar{X_j}| \geq t_{\alpha/2, N-k} \sqrt{MSE(\frac{1}{n_i} + \frac{1}{n_j})}
+$$
+
+- Can use $\alpha/2$ significance level
+- But type I error may be greater than $\alpha$
+
+
+!!! note "Why use t?"
+
+    - Difference follows normal distribution
+    - MSE is chi squared.
+    - $\frac{Z}{\sqrt{\chi^2/n}} \tilde t_n$
+
+#### Rank-based Fisher's LSD Procedure for Large Samples
+
+- Benefit of using ranks: Less sensitive to outliers
+
+1. Perform KW-test for equality
+2. Stop if result is to accept H0
+3. Perform all pariwise $z$-tests at significance level $\alpha$.
+
+$$
+|\bar{R_i} - \bar{R_j}| \geq z_{\alpha/2} \sqrt{S_R^2(\frac{1}{n_i} + \frac{1}{n_j})}
+$$
+
+- Can use normal critical value because 
+- $S^2_R = \frac{N(N+1)}{12}$ or $\frac{N(N+1)}{12} - \frac{\sum^g_{i=1}(t_i^3-t_i)}{12(N-1)}$ (if ties exist)
+- $Var(\bar{R_i} - \bar{R_j}) = S_R^2(\frac{1}{n_i} + \frac{1}{n_j})$
+
+!!! note "Why use normal instead of t?"
+
+    - $S_R^2$ is constant (variance of ranks is constant)
+    - The only random thing is $|\bar{R_i} - \bar{R_j}|$, which is normal (large sample approximation).
+
+### Tukey's Honesty Significant Difference (HSD) (largest difference between sample means among all pairs)
+
+**Suppose populations are normally distributed and sample sizes are equal.**
+
+$$
+Q = \max_{i=j}\frac{\sqrt{n}|\bar{X_i} - \bar{X_j}|}{\sqrt{MSE}}
+$$
+
+MSE is for combined sample.
+
+$$
+|\bar{X_i} - \bar{X_j}| \geq q(\alpha, k, df)\sqrt{\frac{MSE}{n}}, df = N-k
+$$
+
+- Look up $q$-distribution table
+- Guarntee experiment-wise error rate to be exactly $\alpha$.
+
+!!! note "Unequal sample size: Tukey-Kramer procedure"
+    $$
+    |\bar{X_i} - \bar{X_j}| \geq q(\alpha, k, df)\sqrt{\frac{MSE}{2}(\frac{1}{n_i} + \frac{1}{n_j})}
+    $$
+
+    Conservative, error rate $\leq \alpha$.
+
+#### Rank-based Tukey's HSD Procedure for Large Samples
+
 
