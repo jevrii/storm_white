@@ -75,7 +75,7 @@ Can also use this tet to test for the median of a symmetric distribution based o
 
 Under H0, indicator of sign of $D$ follows $Ber(0.5)$.
 
-Then $E(SR_+) = \frac{1}{2} \sum^n_{i=1} R_i$, $Var(SR_+) = \frac{1}{4} \sum^n_{i=1} R_i^2$, $\frac{SR_+ - E(SR_+)}{\sqrt{Var(SR_+)}} \tilde N(0, 1)$
+Then $E(SR_+) = \frac{1}{2} \sum^n_{i=1} R_i$, $Var(SR_+) = \frac{1}{4} \sum^n_{i=1} R_i^2$, $\frac{SR_+ - E(SR_+)}{\sqrt{Var(SR_+)}} \sim N(0, 1)$
 
 In case of ties, use average rank of tied observations.
 
@@ -101,7 +101,7 @@ $X_{ij} = \mu + t_i + b_j + \epsilon_{ij}$
 
 Test between $H_0: t_1 = \cdots = t_k$ vs $H_1$: Not all $t_i$ are the same.
 
-When $\epsilon \tilde N(\mu, \sigma^2)$, we can carry out the $F$-test using the $F$ statistic: $F = \frac{MSB}{MSE} = \frac{SSB/(k-1)}{SSE/[(k-1)(b-1)]}$
+When $\epsilon \sim N(\mu, \sigma^2)$, we can carry out the $F$-test using the $F$ statistic: $F = \frac{MSB}{MSE} = \frac{SSB/(k-1)}{SSE/[(k-1)(b-1)]}$
 
 ### Permutation F-test for RCB designs
 
