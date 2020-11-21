@@ -98,7 +98,7 @@ Definition: $T(X)$ sufficient, $\mathbb{E}_\theta[g(T)] = 0 \forall \theta \Righ
 
 ### Complete sufficient of exponential family
 
-!!! important "Theorem: If $\Pi$ contains open rectangle in $\mathbb{R}^k$, then natural statistic $T(X)$ is complete sufficient for $\pi$.
+!!! important "Theorem: If $\Pi$ contains open rectangle in $\mathbb{R}^k$, then natural statistic $T(X)$ is complete sufficient for $\pi$."
     Open rectangle: Open interval in 1d, Open rectangle in 2d
 
 !!! warning
