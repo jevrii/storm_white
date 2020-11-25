@@ -18,6 +18,8 @@
 
     Outcomes in same cell of partition (same $T(X)$) share proportional likelihood function $l(\theta)$.
 
+Sufficient statistic is not unique.
+
 ## Likelihood function
 
 $l_X(\theta) \propto f(X|\theta)$
@@ -62,6 +64,9 @@ $\forall X, X', T(X) = T(X') \Leftrightarrow l_X(\theta) \propto l_{X'}(\theta)$
 
     One direction only!!
 
+!!! example
+    ![ch4 minimal sufficient eg](../images/ch4_minimal_sufficient_eg.png)
+
 ### Sufficiency of exponential family
 
 ![ch4 sufficient exponential](../images/ch4_sufficient_exponential.png)
@@ -92,6 +97,9 @@ Definition: $T(X)$ sufficient, $\mathbb{E}_\theta[g(T)] = 0 \forall \theta \Righ
 !!! example
     ![ch4 complete eg2](../images/ch4_complete_eg2.png)
 
+!!! example
+    ![ch4 complete eg3](../images/ch4_complete_eg3.png)
+
 !!! important "Theorem (Lehmann-Scheffe): $T(X)$ complete sufficient for $\theta$ $\Rightarrow$ $T(X)$ minimal sufficient for $\theta$"
     ??? question "Proof"
         ![ch4 lehmann scheffe proof](../images/ch4_lehmann_scheffe_proof.png)
@@ -101,5 +109,22 @@ Definition: $T(X)$ sufficient, $\mathbb{E}_\theta[g(T)] = 0 \forall \theta \Righ
 !!! important "Theorem: If $\Pi$ contains open rectangle in $\mathbb{R}^k$, then natural statistic $T(X)$ is complete sufficient for $\pi$."
     Open rectangle: Open interval in 1d, Open rectangle in 2d
 
+    ??? question "Proof"
+        ![ch4 open rectangle proof](../images/ch4_open_rectangle_proof.png)
+
+!!! example
+    ![ch4 open rectangle eg1](../images/ch4_open_rectangle_eg1.png)
+
+!!! example
+    ![ch4 open rectangle eg1](../images/ch4_open_rectangle_eg2.png)
+
 !!! warning
     If not contain open rectangle, it is possible that it is still complete sufficient
+
+    ??? example
+        ![ch4 open rectangle eg3](../images/ch4_open_rectangle_eg3.png)
+
+## Remark on proportionality
+
+!!! warning
+    ![ch4 propto remark](../images/ch4_propto_remark.png)
