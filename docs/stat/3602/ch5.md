@@ -20,6 +20,12 @@ Define $\rho^* = \rho^*(T) = \mathbb{E}[\rho(X) | T]$
 
     Also, Rao-Blackwell highlights an important use of complete sufficient statistic. This alone justifies our need to study the concept of **completeness**.
 
+!!! quote "Exam example: 2017"
+    ... some calculations of MLE and complete sufficient statistic
+
+    The mle $\hat{\theta}$ is a function of $X-Y$ according to (previous part). If it were unbiased for $\theta$, then it must be identical to the UMVU estimator by Rao-Blackwell Theorem. That the two estimates differ on the data, which has a positive probability to be observed, implies that $\hat{\theta}$ cannot be unbiased for $\theta$.
+
+
 !!! example
     ![ch5 rao blackwell eg](../images/ch5_rao_blackwell_eg.png)
 
