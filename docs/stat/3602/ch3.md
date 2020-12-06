@@ -30,16 +30,25 @@
 
 Natural parameter space $\Pi$ can be different from parameter space $\Theta$
 
-!!! example
+??? example "Example ($N(|\theta|, |\theta| + \theta^2)$"
     $\text{Poisson}(\lambda)$: $\theta = \lambda \in \Omega = (0, \infty), \pi_1(\lambda) = ln(\lambda) \in \Pi = (-\infty, \infty)$
 
     $\text{N}(\mu, \sigma^2)$: $\begin{align*}\theta = (\mu, \sigma^2) \in \Omega = (-\infty, \infty) \times (0, \infty),\\ (\pi_1(\lambda), \pi_2(\lambda)) = \left(-\frac{1}{2\sigma^2}, \frac{\mu}{\sigma^2}\right) \in \Pi = (-\infty, 0) \times (-\infty, \infty)\end{align*}$
 
     $\text{N}(|\theta|, |\theta|+\theta^2)$: $\theta \in \Omega = (-\infty, -1] \cap [1, \infty)$, $(\pi_1(\theta), \pi_2(\theta)) = \left(\frac{1}{2(|\theta + \theta^2)}, \frac{1}{1+|\theta|}\right) \in \Pi = \{\pi_1 = \frac{\pi_2^2}{2(\pi_2-1)}\}$
 
-![exponntial sample iid](../images/ch3_exponential_sample_iid.png)
+!!! success "i.i.d. samples from exponential family also exponential family form"
+    $$
+    f(x_1, \cdots, x_n | \pi) = f(x_1|\pi) \cdots f(x_n|\pi) \propto h(x_1) \cdots h(x_n) \exp\left(\sum_j\pi_j\sum^n_{i=1}x_j(x_i)\right)
+    $$
 
-!!! important "Theorem: Distribution of natural statistic $T = (t_1(X), \cdots, t_k(X))$ has exponential family form with natural parameter also given by $\pi \in \Pi$"
+    Natural statistic:
+
+    $$
+    \pi = \pi_j \in \Pi, T = \sum^n_{i=1}x_j(x_i)
+    $$
+
+??? important "Theorem: Distribution of natural statistic $T = (t_1(X), \cdots, t_k(X))$ has exponential family form with natural parameter also given by $\pi \in \Pi$"
     ![ch3 proof](../images/ch3_proof.png)
 
 ??? example
@@ -47,12 +56,13 @@ Natural parameter space $\Pi$ can be different from parameter space $\Theta$
 
 ## Conditional distribution of natural statistic
 
-!!! theorem "Conditional distribution of natural statistic"
+!!! important "Conditional distribution of natural statistic"
     Distribution of $T_1$ conditional on $T_2$ has exponential family form with natural parameter $\pi_1$
 
-    Can get rid of $\pi_2$
+    !!! success
+        Can get rid of $\pi_2$
 
-!!! question "Proof"
+??? question "Proof"
     $\text{Conditional} = \frac{\text{Joint of } T_1, T_2}{\text{Marginal of } T_2}$
 
     $g(t_1 | t_2, \pi) = \frac{g(t_1, t_2 | \pi)}{g(t_2 | \pi)} \propto g(t_1, t_2 | \pi) \propto h^* (t_1, t_2) exp(\pi_1 t_1 + \pi_2 t_2) \propto h^{**} exp (\pi_1 t_1)$

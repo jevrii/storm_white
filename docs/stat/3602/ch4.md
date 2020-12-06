@@ -48,7 +48,7 @@ $S_X(\theta) = \ln l_X(\theta) = \ln \prod^n_{i=1} l_{X_i}(\theta) = \sum^n_{i=1
     ??? question "Proof (factorization is sufficient)"
         ![factorization is sufficient](../images/ch4_factorization_is_sufficient.png)
     
-!!! example
+??? example
     ![ch4 eg sufficiency](../images/ch4_eg_sufficiency.png)
 
 ## Minimal sufficient
@@ -64,24 +64,53 @@ $\forall X, X', T(X) = T(X') \Leftrightarrow l_X(\theta) \propto l_{X'}(\theta)$
 
     One direction only!!
 
-!!! example
+??? example "Example (why $\max{X_i}$ is minimal sufficient for $U[0, \theta]$)"
     ![ch4 minimal sufficient eg](../images/ch4_minimal_sufficient_eg.png)
 
-### Sufficiency of exponential family
+## Sufficiency of exponential family
 
-![ch4 sufficient exponential](../images/ch4_sufficient_exponential.png)
+??? important "Theorem: Natural statistic $T$ is sufficient."
+    ![ch4 sufficient exponential](../images/ch4_sufficient_exponential.png)
 
-!!! important "Theorem: If $\Pi$ is not contained in any affine hyperplane in $\mathbb{R}^k$, then $T(X)$ is minimal sufficient for $\theta$"
+??? important "Theorem: If $\Pi$ is not contained in any affine hyperplane in $\mathbb{R}^k$, then $T(X)$ is minimal sufficient for $\theta$ (NOT single point in $\mathbb{R}_1$, NOT straight line in $\mathbb{R}_2$"
     ![ch4 affine hyperplane](../images/ch4_affine_hyperplane.png)
 
-!!! example
+??? example "Example: 2D rectangle minimal sufficient"
     ![ch4 affine eg1](../images/ch4_affine_eg1.png)
 
-!!! example
+??? example "Example: 2D straight line not minimal sufficient"
     ![ch4 affine eg2](../images/ch4_affine_eg2.png)
 
-!!! example
+??? example "Example: 2D curve minimal sufficient"
     ![ch4 affine eg3](../images/ch4_affine_eg3.png)
+
+??? important "Theorem: If $\Pi$ contains open rectangle in $\mathbb{R}^k$, then natural statistic $T(X)$ is complete sufficient for $\pi$."
+    Open rectangle: Open interval in 1d, Open rectangle in 2d
+
+    !!! question "Proof"
+        ![ch4 open rectangle proof](../images/ch4_open_rectangle_proof.png)
+
+!!! quote
+    The natural parameter space for $\ln{\theta}$ is $(-\infty, \infty)$, which contains an open interval. Thus $T$ is a complete sufficient statistic for $\theta$.
+
+??? example "2D rectangle complete"
+    ![ch4 open rectangle eg1](../images/ch4_open_rectangle_eg1.png)
+
+??? example "2D curve not complete"
+    ![ch4 open rectangle eg2](../images/ch4_open_rectangle_eg2.png)
+
+!!! warning
+    If not contain open rectangle, it is possible that it is still complete sufficient
+
+    ??? example
+        ![ch4 open rectangle eg3](../images/ch4_open_rectangle_eg3.png)
+
+!!! warning
+    Complete statistic must be minimal sufficient
+    
+    But minimal sufficient statistic may not be complete
+
+    Not complete statistic can still be minimal sufficient
 
 ## Likelihood principle
 
@@ -91,6 +120,10 @@ If $l_A(\theta) \propto l_B(\theta)$, then $\text{Inference from A } \equiv \tex
 
 Definition: $T(X)$ sufficient, $\mathbb{E}_\theta[g(T)] = 0 \forall \theta \Rightarrow \mathbb{P}(g(T) = 0) = 1 \forall \theta$
 
+!!! important "Theorem (Lehmann-Scheffe): $T(X)$ complete sufficient for $\theta$ $\Rightarrow$ $T(X)$ minimal sufficient for $\theta$"
+    ??? question "Proof"
+        ![ch4 lehmann scheffe proof](../images/ch4_lehmann_scheffe_proof.png)
+
 !!! example
     ![ch4 complete eg1](../images/ch4_complete_eg1.png)
     
@@ -99,30 +132,6 @@ Definition: $T(X)$ sufficient, $\mathbb{E}_\theta[g(T)] = 0 \forall \theta \Righ
 
 !!! example
     ![ch4 complete eg3](../images/ch4_complete_eg3.png)
-
-!!! important "Theorem (Lehmann-Scheffe): $T(X)$ complete sufficient for $\theta$ $\Rightarrow$ $T(X)$ minimal sufficient for $\theta$"
-    ??? question "Proof"
-        ![ch4 lehmann scheffe proof](../images/ch4_lehmann_scheffe_proof.png)
-
-### Complete sufficient of exponential family
-
-!!! important "Theorem: If $\Pi$ contains open rectangle in $\mathbb{R}^k$, then natural statistic $T(X)$ is complete sufficient for $\pi$."
-    Open rectangle: Open interval in 1d, Open rectangle in 2d
-
-    ??? question "Proof"
-        ![ch4 open rectangle proof](../images/ch4_open_rectangle_proof.png)
-
-!!! example
-    ![ch4 open rectangle eg1](../images/ch4_open_rectangle_eg1.png)
-
-!!! example
-    ![ch4 open rectangle eg1](../images/ch4_open_rectangle_eg2.png)
-
-!!! warning
-    If not contain open rectangle, it is possible that it is still complete sufficient
-
-    ??? example
-        ![ch4 open rectangle eg3](../images/ch4_open_rectangle_eg3.png)
 
 ## Remark on proportionality
 
