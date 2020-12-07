@@ -25,6 +25,17 @@ Define $\rho^* = \rho^*(T) = \mathbb{E}[\rho(X) | T]$
 
     The mle $\hat{\theta}$ is a function of $X-Y$ according to (previous part). If it were unbiased for $\theta$, then it must be identical to the UMVU estimator by Rao-Blackwell Theorem. That the two estimates differ on the data, which has a positive probability to be observed, implies that $\hat{\theta}$ cannot be unbiased for $\theta$.
 
+!!! quote "Tutorial 9"
+    ... calculate MLE which is biased then multiply it by a constant to make it unbiased
+
+    ... calculate CRLB
+
+    ... calculate variance of MLE using elementary techniques
+
+    The CRLB is not attained by the unbiased estimator. In fact, as $T$ is a complete sufficient statistic, the CRLB cannot be attained by any unbiased estimator.
+
+    (Re: Only **one** function of $T$ is unbiased estimator)
+
 ??? example
     ![ch5 rao blackwell eg](../images/ch5_rao_blackwell_eg.png)
 

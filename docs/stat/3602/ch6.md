@@ -27,7 +27,7 @@
 
     UMP: Size $\leq \alpha$, and power is the greatest at $\Theta_1$ for all tests. If it exists, it is unbiased.
 
-    UMPU: Size $\leq \alpha$, and power is the greatest at $\Theta_1$ for all unbiased tests
+    UMPU: Size $\leq \alpha$, and power is the greatest at $\Theta_1$ for all **unbiased** tests
 
 ## Note on critical region and p-value
 
