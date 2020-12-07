@@ -14,7 +14,7 @@ Repeat until the **length of the interval** or **$f(c)$ is small enough**.
 
 !!! example
     - Find root of $e^x = sin x$ in the interval $[-4, -3]$, with termination scalar $\epsilon$.
-    - Then let $f(x) = e^x - sin x$. Finding zero of $f(x) is equivalent to finding root in original equation.
+    - Then let $f(x) = e^x - sin x$. Finding zero of $f(x)$ is equivalent to finding root in original equation.
     - $f(-4)f(-3) < 0$
     - Then continue iterating until $f(c) < \epsilon$
 
@@ -123,7 +123,7 @@ $$
 
 Motivation: Calculationg $f'(x)$ is difficult. Why not use an approximation of $f'(x)$ instead?
 
-Approximate $f'(x_n) as \frac{f(x_n)-f(x_{n-1})}{f(x_n)-f(x_{n-1})}$
+Approximate $f'(x_n)$ as $\frac{f(x_n)-f(x_{n-1})}{f(x_n)-f(x_{n-1})}$
 
 So the iterative scheme becomes 
 
@@ -133,16 +133,16 @@ $$
 
 - Slower than Newton's method (proof not required)
 
-### Practical considerations for Newton's method
+!!! warning "Practical considerations for Newton's method"
 
-- Difficulty in calculating $f'(x)$
-- Failure of the method to converge to the root
-- Overshoot and diverge away from the root
-- Stationary point $f'(x) = 0$
-- Poor initial estimate leading to non-convergence
-- Slow convergence for repeated roots
-    - **If the root has multiplicity greater than one, the convergence rate is linear.**
-- Divergent loop
+    - Difficulty in calculating $f'(x)$
+    - Failure of the method to converge to the root
+    - Overshoot and diverge away from the root
+    - Stationary point $f'(x) = 0$
+    - Poor initial estimate leading to non-convergence
+    - Slow convergence for repeated roots
+        - **If the root has multiplicity greater than one, the convergence rate is linear.**
+    - Divergent loop
 
 ## System of nonlinear equations
 
@@ -178,7 +178,7 @@ Multi-variable Newton's method still enjoys the property of **quadratic converge
 However, a significant weakness is the requirement that, in each iteration:
 
 - a Jacobian matrix (involving $n^2$ partial derivatives) has to be evaluated
-- an n*n linear system involving this matrix must be solved.
+- an $n \times n$ linear system involving this matrix must be solved.
 
 ### Rescaled simple iteration: Reduce cost of approximating $F'(X^{(k)})^{(-1)}$
 

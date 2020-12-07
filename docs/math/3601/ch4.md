@@ -74,16 +74,16 @@ However, polynomials are **rigid** and may create problems at boundaries (Re: Ru
 
 $$
 \begin{align*}
-p_n(x) = y_0 l_0(x) + y_1 l_1(x) + \cdots + y_n l_n(x) \\
-l_i(x) = \prod^n_{j=0, j \neq i} \frac{x-x_j}{x_i-x_j}
+p_n(x) = y_0 \ell_0(x) + y_1 \ell_1(x) + \cdots + y_n \ell_n(x) \\
+\ell_i(x) = \prod^n_{j=0, j \neq i} \frac{x-x_j}{x_i-x_j}
 \end{align*}
 $$
 
-where $l_i$ are polynomials that depend on $x_0, \cdots x_n$ but not on $y_0 \cdots y_n$.
+where $\ell_i$ are polynomials that depend on $x_0, \cdots x_n$ but not on $y_0 \cdots y_n$.
 
-Note that $y_i = p_n(x_i) = y_0 l_0(x_i) + y_1 l_1(x_i) + \cdots + y_n l_n(x_i)$.
+Note that $y_i = p_n(x_i) = y_0 \ell_0(x_i) + y_1 \ell_1(x_i) + \cdots + y_n \ell_n(x_i)$.
 
-So $l_i(x_j) = 1$ if $i = j$ and $l_i(x_j) = 0$ if $i \neq j$
+So $\ell_i(x_j) = 1$ if $i = j$ and $\ell_i(x_j) = 0$ if $i \neq j$
 
 !!! example
     $(1, 1), (2, 8), (3, 27)$
@@ -95,6 +95,11 @@ So $l_i(x_j) = 1$ if $i = j$ and $l_i(x_j) = 0$ if $i \neq j$
     ```
     interpolate [(1, 1) (2, 8) (3, 27)]
     ```
+
+!!! note
+    $\sum^n_{i=0}\ell_i(x) = 1$
+
+    Try interpolating $P(x) = f(x) = 1$
 
 While elegant and theoretically important, the Lagrange interpolation formula is not suitable for actual computations, because:
 
@@ -158,7 +163,7 @@ i.e. Piecewise polynomial of degree at most $k$ having continuous derivatives of
 - Spline of degree 0: Piecewise constant, step funtion (right continuous), intervals do not intersect
 - Spline of degree 1: Piecewise linear, continuous
 
-Checking spline: Left hand and right hand limit of value and derivatives are continuous
+Checking spline: Left hand and right hand limit of value and (deg-1) derivatives are continuous
 
 #### Cubic spline
 
