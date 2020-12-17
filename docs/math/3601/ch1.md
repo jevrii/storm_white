@@ -32,13 +32,13 @@ $$
 CN = \frac{\frac{f(x) - f(x_0)}{f(x_0)}}{\frac{x-x_0}{x_0}} \approx \frac{x_0 f'(x_0)}{f(x_0)}
 $$
 
-Matrix case:
-
-$$
-cond(A) = \frac{||A||}{||A^{-1}||}
-$$
-
 ## Order of Convergence
+
+$$
+\lim_{n\to\infty} \frac{|x_{n+1}-x^*|}{|x_n-x^*|^p} = \beta
+$$
+
+Use L'Hopital rule?
 
 ## Big O
 

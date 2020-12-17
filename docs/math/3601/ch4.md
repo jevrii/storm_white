@@ -228,9 +228,9 @@ $$
 
     So choose $\alpha_0, \alpha_1$ to minimize $g(\alpha_0, \alpha_1) = \int_{-1}^1{[e^x - \alpha_0 - \alpha_1]^2 dx}$
 
-    $0 = \frac{\partial g}{\partial \alpha_0} = 2 \int_{-1}^1{[e^x - \alpha_0 - \alpha_1] (-1)} dx$
+    $0 = \frac{\partial g}{\partial \alpha_0} = 2 \int_{-1}^1{[e^x - \alpha_0 - \alpha_1x] (-1)} dx$
 
-    $0 = \frac{\partial g}{\partial \alpha_0} = 2 \int_{-x}^1{[e^x - \alpha_0 - \alpha_1] (-1)} dx$
+    $0 = \frac{\partial g}{\partial \alpha_0} = 2 \int_{-1}^1{[e^x - \alpha_0 - \alpha_1x] (-x)} dx$
 
     Solving gives $2\alpha_0 = e-e^{-1}$, $\frac{2}{3}\alpha_1 = 2e^{-1}$.
 
@@ -238,6 +238,6 @@ $$
 
 Something related to orthogonal functions...
 
-E.g. Orthogona function: Fourier series
+E.g. Orthogonal function: Fourier series
 
 TODO
