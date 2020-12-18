@@ -65,7 +65,7 @@ a_{11} & 0 & 0 \\
 0 & a_{22} & 0 \\
 0 & 0 & a_{33} \\
 \end{bmatrix}\\
-x^{(k+1)} = D^{-1}(b - Rx^{(k)}) = D^{-1} - D^{-1}Rx^{(k)}\\
+x^{(k+1)} = D^{-1}(b - Rx^{(k)}) = D^{-1}b - D^{-1}Rx^{(k)}\\
 x_i^{(k+1)} = \frac{1}{a_{ii}}\left(b_i - \sum_{j \neq i}{a_{ij}x_j^{(k)}}\right)
 \end{align*}
 $$
