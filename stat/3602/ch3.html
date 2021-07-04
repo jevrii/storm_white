@@ -1,0 +1,871 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
+    
+    
+      
+        <title>Chapter 3: Exponential Families - storm_white</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-3-exponential-families" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="storm_white" class="md-header__button md-logo" aria-label="storm_white" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 21.35-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            storm_white
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 3: Exponential Families
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/jevrii/storm_white/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jevrii/storm_white
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../index.html" class="md-tabs__link">
+      storm_white 雷白
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../math/3601/ch1.html" class="md-tabs__link">
+        Math
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="ch1.html" class="md-tabs__link md-tabs__link--active">
+        Stat
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="storm_white" class="md-nav__button md-logo" aria-label="storm_white" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 21.35-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"/></svg>
+
+    </a>
+    storm_white
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/jevrii/storm_white/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jevrii/storm_white
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        storm_white 雷白
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Math
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Math" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Math
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      <label class="md-nav__link" for="__nav_2_1">
+        3601
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3601" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          3601
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch1.html" class="md-nav__link">
+        Chapter 1: Preliminaries
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch2.html" class="md-nav__link">
+        Chapter 2: Solutions of Nonlinear Equations
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch3.html" class="md-nav__link">
+        Chapter 3: Numerical Linear Algebra
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch4.html" class="md-nav__link">
+        Chapter 4: Approximating functions
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch5.html" class="md-nav__link">
+        Chapter 5: Numerical Integration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch6.html" class="md-nav__link">
+        Chapter 6: Numerical Differentiation and ODE
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Stat
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Stat" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Stat
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+      
+      <label class="md-nav__link" for="__nav_3_1">
+        3602
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3602" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          3602
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch1.html" class="md-nav__link">
+        Chapter 1: Decision Problem: Frequentist Approach
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch2.html" class="md-nav__link">
+        Chapter 2: Decision Problem: Bayesian Approach
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Chapter 3: Exponential Families
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="ch3.html" class="md-nav__link md-nav__link--active">
+        Chapter 3: Exponential Families
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exponential-family" class="md-nav__link">
+    Exponential family
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#natural-parameter-space" class="md-nav__link">
+    Natural parameter space
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditional-distribution-of-natural-statistic" class="md-nav__link">
+    Conditional distribution of natural statistic
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch4.html" class="md-nav__link">
+        Chapter 4: Sufficiency and Likelihood
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch5.html" class="md-nav__link">
+        Chapter 5: Estimation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch6.html" class="md-nav__link">
+        Chapter 6: Hypothesis testing
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        3620
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3620" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          3620
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3620/ch3.html" class="md-nav__link">
+        Chapter 3: k-Sample methods
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3620/ch4.html" class="md-nav__link">
+        Chapter 4: Paired Comparisons and Block Designs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3620/ch5.html" class="md-nav__link">
+        Chapter 5: Tests for Trends and Association
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exponential-family" class="md-nav__link">
+    Exponential family
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#natural-parameter-space" class="md-nav__link">
+    Natural parameter space
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditional-distribution-of-natural-statistic" class="md-nav__link">
+    Conditional distribution of natural statistic
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/jevrii/storm_white/edit/master/docs/stat/3602/ch3.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="chapter-3-exponential-families">Chapter 3: Exponential Families</h1>
+<h2 id="exponential-family">Exponential family</h2>
+<div class="admonition important">
+<p class="admonition-title">Theorem: Exponential family</p>
+<div class="arithmatex">\[
+f(x|\theta) \propto h(x) \exp(\sum^k_{j=1} \pi_j(\theta) t_j(x)), x \in S \text{ (free of } \theta \text{)}
+\]</div>
+<div class="arithmatex">\[
+f(x|\pi) \propto h(x) \exp(\sum^k_{j=1} \pi_j t_j(x)), x \in S \text{ (free of } \theta \text{)}
+\]</div>
+<div class="arithmatex">\[
+f(x|\pi) = C(\pi) h(x) \exp(\sum^k_{j=1} \pi_j t_j(x)) \text{ (normalizing constant)}
+\]</div>
+<p>Note: Uniform distribution is not exponential family form, because <span class="arithmatex">\(x \in [0, \theta]\)</span>, the sample space depends on <span class="arithmatex">\(\theta\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><img alt="exponential form of common pdf" src="../images/ch3_exponential_form_pdf.png" /></p>
+</div>
+<h2 id="natural-parameter-space">Natural parameter space</h2>
+<ul>
+<li>Natural parameter space: <span class="arithmatex">\(\Pi = \{ \pi = (\pi_1(\theta), \pi_2(\theta), \cdots, \pi_k(\theta)) : \theta \in \Theta \} \subset \mathbb{R}^k\)</span></li>
+<li>Natural parameter <span class="arithmatex">\(\pi = (\pi_1, \cdots, \pi_k) \in \Pi\)</span></li>
+<li>Natural statistic <span class="arithmatex">\((t_1(X), \cdots, t_2(X))\)</span> for <span class="arithmatex">\(X \in S\)</span> drawn from <span class="arithmatex">\(f(\cdot | \theta)\)</span><ul>
+<li>e.g. <span class="arithmatex">\(T = \sum^n_{i=1}X_i\)</span>, <span class="arithmatex">\(T = (\sum^n_{i=1}X_i^2, \sum^n_{i=1}X_i)\)</span></li>
+</ul>
+</li>
+</ul>
+<p>Natural parameter space <span class="arithmatex">\(\Pi\)</span> can be different from parameter space <span class="arithmatex">\(\Theta\)</span></p>
+<details class="example"><summary>Example (<span class="arithmatex">\(N(|\theta|, |\theta| + \theta^2)\)</span></summary><p><span class="arithmatex">\(\text{Poisson}(\lambda)\)</span>: <span class="arithmatex">\(\theta = \lambda \in \Omega = (0, \infty), \pi_1(\lambda) = ln(\lambda) \in \Pi = (-\infty, \infty)\)</span></p>
+<p><span class="arithmatex">\(\text{N}(\mu, \sigma^2)\)</span>: <span class="arithmatex">\(\begin{align*}\theta = (\mu, \sigma^2) \in \Omega = (-\infty, \infty) \times (0, \infty),\\ (\pi_1(\lambda), \pi_2(\lambda)) = \left(-\frac{1}{2\sigma^2}, \frac{\mu}{\sigma^2}\right) \in \Pi = (-\infty, 0) \times (-\infty, \infty)\end{align*}\)</span></p>
+<p><span class="arithmatex">\(\text{N}(|\theta|, |\theta|+\theta^2)\)</span>: <span class="arithmatex">\(\theta \in \Omega = (-\infty, -1] \cap [1, \infty)\)</span>, <span class="arithmatex">\((\pi_1(\theta), \pi_2(\theta)) = \left(\frac{1}{2(|\theta + \theta^2)}, \frac{1}{1+|\theta|}\right) \in \Pi = \{\pi_1 = \frac{\pi_2^2}{2(\pi_2-1)}\}\)</span></p>
+</details>
+<div class="admonition success">
+<p class="admonition-title">i.i.d. samples from exponential family also exponential family form</p>
+<div class="arithmatex">\[
+f(x_1, \cdots, x_n | \pi) = f(x_1|\pi) \cdots f(x_n|\pi) \propto h(x_1) \cdots h(x_n) \exp\left(\sum_j\pi_j\sum^n_{i=1}x_j(x_i)\right)
+\]</div>
+<p>Natural statistic:</p>
+<div class="arithmatex">\[
+\pi = \pi_j \in \Pi, T = \sum^n_{i=1}x_j(x_i)
+\]</div>
+</div>
+<details class="important"><summary>Theorem: Distribution of natural statistic <span class="arithmatex">\(T = (t_1(X), \cdots, t_k(X))\)</span> has exponential family form with natural parameter also given by <span class="arithmatex">\(\pi \in \Pi\)</span></summary><p><img alt="ch3 proof" src="../images/ch3_proof.png" /></p>
+</details>
+<details class="example"><summary>Example</summary><p><img alt="ch3 poisson eg" src="../images/ch3_poisson_eg.png" /></p>
+</details>
+<h2 id="conditional-distribution-of-natural-statistic">Conditional distribution of natural statistic</h2>
+<div class="admonition important">
+<p class="admonition-title">Conditional distribution of natural statistic</p>
+<p>Distribution of <span class="arithmatex">\(T_1\)</span> conditional on <span class="arithmatex">\(T_2\)</span> has exponential family form with natural parameter <span class="arithmatex">\(\pi_1\)</span></p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p>Can get rid of <span class="arithmatex">\(\pi_2\)</span></p>
+</div>
+</div>
+<details class="question"><summary>Proof</summary><p><span class="arithmatex">\(\text{Conditional} = \frac{\text{Joint of } T_1, T_2}{\text{Marginal of } T_2}\)</span></p>
+<p><span class="arithmatex">\(g(t_1 | t_2, \pi) = \frac{g(t_1, t_2 | \pi)}{g(t_2 | \pi)} \propto g(t_1, t_2 | \pi) \propto h^* (t_1, t_2) exp(\pi_1 t_1 + \pi_2 t_2) \propto h^{**} exp (\pi_1 t_1)\)</span></p>
+</details>
+<p>So we can try to formulate <span class="arithmatex">\(\pi_1\)</span> such that it is useful to us.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><img alt="ch3 conditional eg" src="../images/ch3_conditional_eg.png" /></p>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="ch2.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Chapter 2: Decision Problem: Bayesian Approach" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Chapter 2: Decision Problem: Bayesian Approach
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="ch4.html" class="md-footer__link md-footer__link--next" aria-label="Next: Chapter 4: Sufficiency and Likelihood" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Chapter 4: Sufficiency and Likelihood
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["tabs", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

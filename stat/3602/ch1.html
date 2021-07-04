@@ -1,0 +1,1041 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
+    
+    
+      
+        <title>Chapter 1: Decision Problem: Frequentist Approach - storm_white</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-1-decision-problem-frequentist-approach" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="storm_white" class="md-header__button md-logo" aria-label="storm_white" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 21.35-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            storm_white
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 1: Decision Problem: Frequentist Approach
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/jevrii/storm_white/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jevrii/storm_white
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../index.html" class="md-tabs__link">
+      storm_white 雷白
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../math/3601/ch1.html" class="md-tabs__link">
+        Math
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="ch1.html" class="md-tabs__link md-tabs__link--active">
+        Stat
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="storm_white" class="md-nav__button md-logo" aria-label="storm_white" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 21.35-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"/></svg>
+
+    </a>
+    storm_white
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/jevrii/storm_white/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jevrii/storm_white
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        storm_white 雷白
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Math
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Math" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Math
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      <label class="md-nav__link" for="__nav_2_1">
+        3601
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3601" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          3601
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch1.html" class="md-nav__link">
+        Chapter 1: Preliminaries
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch2.html" class="md-nav__link">
+        Chapter 2: Solutions of Nonlinear Equations
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch3.html" class="md-nav__link">
+        Chapter 3: Numerical Linear Algebra
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch4.html" class="md-nav__link">
+        Chapter 4: Approximating functions
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch5.html" class="md-nav__link">
+        Chapter 5: Numerical Integration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch6.html" class="md-nav__link">
+        Chapter 6: Numerical Differentiation and ODE
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Stat
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Stat" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Stat
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+      
+      <label class="md-nav__link" for="__nav_3_1">
+        3602
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3602" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          3602
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Chapter 1: Decision Problem: Frequentist Approach
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="ch1.html" class="md-nav__link md-nav__link--active">
+        Chapter 1: Decision Problem: Frequentist Approach
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-setup" class="md-nav__link">
+    General setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frequentist-approach" class="md-nav__link">
+    Frequentist approach
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criteria-for-selecting-decision-rules" class="md-nav__link">
+    Criteria for selecting decision rules
+  </a>
+  
+    <nav class="md-nav" aria-label="Criteria for selecting decision rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#admissible" class="md-nav__link">
+    Admissible
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimax" class="md-nav__link">
+    Minimax
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unbiased" class="md-nav__link">
+    Unbiased
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bayes" class="md-nav__link">
+    Bayes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#randomized-decision-rule" class="md-nav__link">
+    Randomized decision rule
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risk-set" class="md-nav__link">
+    Risk set
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch2.html" class="md-nav__link">
+        Chapter 2: Decision Problem: Bayesian Approach
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch3.html" class="md-nav__link">
+        Chapter 3: Exponential Families
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch4.html" class="md-nav__link">
+        Chapter 4: Sufficiency and Likelihood
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch5.html" class="md-nav__link">
+        Chapter 5: Estimation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch6.html" class="md-nav__link">
+        Chapter 6: Hypothesis testing
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        3620
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3620" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          3620
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3620/ch3.html" class="md-nav__link">
+        Chapter 3: k-Sample methods
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3620/ch4.html" class="md-nav__link">
+        Chapter 4: Paired Comparisons and Block Designs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3620/ch5.html" class="md-nav__link">
+        Chapter 5: Tests for Trends and Association
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-setup" class="md-nav__link">
+    General setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frequentist-approach" class="md-nav__link">
+    Frequentist approach
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criteria-for-selecting-decision-rules" class="md-nav__link">
+    Criteria for selecting decision rules
+  </a>
+  
+    <nav class="md-nav" aria-label="Criteria for selecting decision rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#admissible" class="md-nav__link">
+    Admissible
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimax" class="md-nav__link">
+    Minimax
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unbiased" class="md-nav__link">
+    Unbiased
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bayes" class="md-nav__link">
+    Bayes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#randomized-decision-rule" class="md-nav__link">
+    Randomized decision rule
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risk-set" class="md-nav__link">
+    Risk set
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/jevrii/storm_white/edit/master/docs/stat/3602/ch1.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="chapter-1-decision-problem-frequentist-approach">Chapter 1: Decision Problem: Frequentist Approach</h1>
+<h2 id="general-setup">General setup</h2>
+<ul>
+<li>Parameter space: <span class="arithmatex">\(\Theta\)</span><ul>
+<li>The true parameter is some <strong>unknown</strong> <span class="arithmatex">\(\theta\in\Theta\)</span></li>
+</ul>
+</li>
+<li>Sample space <span class="arithmatex">\(S\)</span><ul>
+<li>Collection of all the possible realizations <span class="arithmatex">\(x\)</span> of a random vector <span class="arithmatex">\(X\)</span></li>
+</ul>
+</li>
+<li>Statistical model <span class="arithmatex">\(f(\cdot | \theta)\)</span><ul>
+<li>"True" probability function of the random vector <span class="arithmatex">\(X\)</span></li>
+</ul>
+</li>
+<li>Action space <span class="arithmatex">\(A\)</span></li>
+<li>Loss function <span class="arithmatex">\(L(\theta, a)\)</span></li>
+</ul>
+<h2 id="frequentist-approach">Frequentist approach</h2>
+<ul>
+<li>Decision rule: <span class="arithmatex">\(d(x): S \to A\)</span><ul>
+<li>Action <span class="arithmatex">\(A\)</span> to be taken when <span class="arithmatex">\(X\)</span> is observed</li>
+</ul>
+</li>
+<li>Risk function: <span class="arithmatex">\(R(\theta, d) = \mathbb{E}_\theta[L(\theta, d(X))] = \int_S{L(\theta, d(x)) f(x|\theta) dx}\)</span><ul>
+<li>Characterize the performance of rule <span class="arithmatex">\(d\)</span> under each possible <span class="arithmatex">\(\theta\in\Theta\)</span></li>
+</ul>
+</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">Goal: Choose one rule <span class="arithmatex">\(d(\cdot)\)</span> (by their risk functions) that is the "best" (in <strong>some</strong> sense)</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example: Quality control</p>
+<p>From a batch of 10 batteries, draw 1 at random and test it. Either it is defective or OK. This is the only observation upon which our decision about the whole batch has to rely.</p>
+<ul>
+<li>Sample space: <span class="arithmatex">\(S = {0, 1}\)</span></li>
+<li>Parameter space: <span class="arithmatex">\(\theta\in\Theta = {0, 1, \cdots, 10}\)</span></li>
+<li>Action space: <span class="arithmatex">\(a_0\)</span> sell all, <span class="arithmatex">\(a_1\)</span> scrap all</li>
+<li>Loss function: <span class="arithmatex">\(L(\theta, a_0) = 30\theta - 150\)</span>, <span class="arithmatex">\(L(\theta, a_1) = 10\)</span></li>
+<li>Only 4 possible decision rules: <span class="arithmatex">\(d_{00}, d_{01}, d_{10}, d_{11}\)</span><ul>
+<li>Can plot the risk function for each <span class="arithmatex">\(d\)</span>. x axis is <span class="arithmatex">\(\theta\)</span>, y axis is the risk.</li>
+<li><span class="arithmatex">\(R(\theta, d) = \Pr_\theta(X = 0 | \theta)L(\theta, d_1(0)) + \Pr_\theta(X = 1 | \theta)L(\theta, d_1(1))\)</span></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="criteria-for-selecting-decision-rules">Criteria for selecting decision rules</h2>
+<h3 id="admissible">Admissible</h3>
+<div class="admonition abstract">
+<p class="admonition-title">Admissible: Not being strictly domintated by another rule</p>
+<p>A rule <span class="arithmatex">\(d\)</span> strictly dominates another rule <span class="arithmatex">\(d^*\)</span> if</p>
+<ul>
+<li><span class="arithmatex">\(R(\theta, d) \leq R(\theta, d^*)\)</span> for all <span class="arithmatex">\(\theta\in\Theta\)</span>, and</li>
+<li><span class="arithmatex">\(R(\theta', d) &lt; R(\theta', d^*)\)</span> for some <span class="arithmatex">\(\theta'\in\Theta\)</span>.</li>
+</ul>
+</div>
+<p>A rather weak (but sensible) condition on choice of decision rule... An inadmissible rule is obviously stupid! Admissibilty provides the first criterion for discarding obviously stupid rules.</p>
+<h3 id="minimax">Minimax</h3>
+<div class="admonition abstract">
+<p class="admonition-title">Minimaxity: Have the smallest "worst-case" risk among all the "worst-case" risks of all rules</p>
+</div>
+<p>Formally, rule <span class="arithmatex">\(d\)</span> is minimax if <span class="arithmatex">\(\sup{R(\theta, d'): \theta\in\Theta} \geq \sup{R(\theta, d): \theta\in\Theta}\)</span></p>
+<p>...a conservative rule?</p>
+<h3 id="unbiased">Unbiased</h3>
+<div class="admonition abstract">
+<p class="admonition-title">Unbiased: Incurs the smallest expected loss if the loss is measured w.r.t to the true <span class="arithmatex">\(\theta\)</span> generating <span class="arithmatex">\(X\)</span>.</p>
+<p>That is, the loss may be measured accoding to another <span class="arithmatex">\(\theta'\)</span>. However, the probabilty distribution of the loss (that governs the observation <span class="arithmatex">\(X\)</span>) remains the original. </p>
+<p>Unbiased rule: The loss is the smallest when the two <span class="arithmatex">\(\theta\)</span> are the same, opposed to when the loss <span class="arithmatex">\(\theta\)</span> and probabilty <span class="arithmatex">\(\theta\)</span> are different.</p>
+</div>
+<p>Formally, a rule <span class="arithmatex">\(d\)</span> is unbiased if <span class="arithmatex">\(\mathbb{E}_\theta[L(\theta', d(X))] \geq \mathbb{E}_\theta[L(\theta, d(X))] = R(\theta, d)\)</span> for all <span class="arithmatex">\(\theta,\theta'\in\Theta\)</span></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When determining whether a rule is unbiased or not, remember to start from the definition!</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>TODO</p>
+</div>
+<p>Application: It may be intractable to find the <strong>best</strong> rule in the class of all rules, but we may be able to find the <strong>best</strong> rule in the subclass of all <strong>unbiased</strong> rules.</p>
+<h3 id="bayes">Bayes</h3>
+<div class="admonition question">
+<p class="admonition-title">If <span class="arithmatex">\(R(\theta, d_1) &gt; R(\theta, d_2)\)</span> for some <span class="arithmatex">\(\theta\)</span>, but <span class="arithmatex">\(R(\theta, d_1) &lt; R(\theta, d_2)\)</span> for other <span class="arithmatex">\(\theta\)</span>, which is better?</p>
+</div>
+<p>Sometimes, although we do not know the true <span class="arithmatex">\(\theta\)</span>, somehow we may have a <strong>subjective</strong> opinion on how the true <span class="arithmatex">\(\theta\)</span> is like (e.g. based on past experience). We call this the <em>prior knowledge</em> of unknown <span class="arithmatex">\(\theta\)</span>.</p>
+<p>With the prior weight function <span class="arithmatex">\(\pi(\theta)\)</span>, we can reduce the risk function to a scalar. The weight function indicates how much "belief" we have in <span class="arithmatex">\(\theta\)</span> being the true parameter.</p>
+<p>Bayes risk: <span class="arithmatex">\(r(\pi, d) = \int_\Theta{R(\theta, d)\pi(\theta)d\theta}\)</span></p>
+<p>Bayes rule: Rule that has the smallest Bayes risk.</p>
+<div class="admonition success">
+<p class="admonition-title">Goal: Given <span class="arithmatex">\(\pi(\cdot)\)</span>, seek the Bayes rule (w.r.t. prior <span class="arithmatex">\(\pi\)</span>).</p>
+</div>
+<p>To find Bayes rules in practice, we can find <span class="arithmatex">\(d\)</span> that minimizes <span class="arithmatex">\(\int_S\int_\theta L(\theta, d(x)) \pi(\theta) f(x|\theta) d\theta dx\)</span> instead. (seems that you can just minimize the inner integral?)</p>
+<details class="derivation"><summary>Derivation</summary><p>TODO</p>
+</details>
+<h2 id="randomized-decision-rule">Randomized decision rule</h2>
+<p>A random mixture of rules - Choose a decision rule by random! <img alt="🎲" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f3b2.svg" title=":game_die:" /></p>
+<blockquote>
+<p>Mainly for analytical purposes... seldom put into practice</p>
+</blockquote>
+<ul>
+<li>Risk function: <span class="arithmatex">\(R(\theta, d^*) = \sum^s_{i=1} p_i R(\theta, d_i)\)</span><ul>
+<li><strong>Convex</strong> combination of the risk functions of the individual rules <span class="arithmatex">\(d_i\)</span>'s.</li>
+<li>So it won't exceed the original deterministic curves</li>
+</ul>
+</li>
+<li>Bayes risk: <span class="arithmatex">\(r(\pi, d^*) = \int R(\theta, d^*) \pi(\theta) d\theta = \sum^s_{i=1}p_i\int R(\theta, d_i) \pi(\theta) d\theta = \sum^s_{i=1}p_i r(\pi, d_i) \geq \min (r(\pi, d_1), \cdots, r(\pi, d_s))\)</span><ul>
+<li>Thus, the risk of a Bayes rule chosen among <span class="arithmatex">\((d_1, \cdots d_s)\)</span> cannot be reduced further by making them into a randomized rule.</li>
+</ul>
+</li>
+<li>Minimax: Randomized rule <strong>can</strong> be more minimax than deterministic minimax rules!</li>
+</ul>
+<h2 id="risk-set">Risk set</h2>
+<p>(restrict to special setting: <span class="arithmatex">\(\Theta = {\theta_1, \theta_2}\)</span>)</p>
+<p>2D plot: x axis <span class="arithmatex">\(R(\theta_1, d)\)</span>, y axis <span class="arithmatex">\(R(\theta_2, d)\)</span>.</p>
+<p>Then each decision rule is a point in the plot. Can find the good rules easily!</p>
+<p>All points in the convex hull -&gt; includes both deterministic and randomized decision rules</p>
+<p>Risk set must be convex</p>
+<ul>
+<li>Admissible rules: lower-left boundary of risk set</li>
+<li>Minimax: Moving the "right angle" <span class="arithmatex">\(\max(x, y) = c\)</span> until it touches the risk set. In <strong>some (not always work)</strong> cases, draw a line <span class="arithmatex">\(R(\theta_1, d) = R(\theta_2, d)\)</span> and find the intersection with the lower boundary.</li>
+<li>Unbiased rule: Nil (not using the diagram <em>alone</em>). Because the risk set only tells us the risk function, but the definition of unbiased rules requires formulae outside of the risk function.</li>
+<li>Bayes rule (w.r.t prior <span class="arithmatex">\(\pi(\theta_1) = \pi_1, \pi(\theta_2) = \pi_2\)</span>): Push a line <span class="arithmatex">\(\pi_1 R(\theta_1, d) + \pi_2 R(\theta_2, d) = c\)</span>. Minimize <span class="arithmatex">\(c\)</span> such that it is still touching the risk set.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example: Hypothesis testing</p>
+<p>TODO</p>
+<p>Admissible rule: Lower boundary. Refer to Neyman-Pearson lemma.</p>
+<p>Minimax rule: <span class="arithmatex">\(R(0, d_k) = R(1, d_k) \implies 1-\Phi(k) = \Phi(k-1) \implies \Phi(-k) = \Phi(k-1) \implies k = 0.5\)</span></p>
+<p>Unbiased rule: <span class="arithmatex">\(R(0, d_k) \leq \frac{1}{2}, R(1, d_k) \leq \frac{1}{2}\)</span></p>
+<p>Randomized rule: Find the point via section formula</p>
+<p>Bayes rule: Minimize <span class="arithmatex">\(\psi (1-\Phi(k)) + (1-\psi) \Phi(k-1)\)</span>. Differentiating w.r.t. <span class="arithmatex">\(k\)</span> gives <span class="arithmatex">\(-\psi \phi(k) + (1-\psi) \psi(k-1) = 0\)</span>, then solve for <span class="arithmatex">\(k\)</span>.</p>
+<ul>
+<li>We can find the Bayes prior for a given rule. In order words, what prior needs to be exist for this rule to be a Bayes rule?</li>
+<li>E.g. <span class="arithmatex">\(k = \Phi^{-1}(0.95)\)</span>, solve for <span class="arithmatex">\(\psi\)</span>. Then <span class="arithmatex">\(\psi = 0.75857\)</span></li>
+<li>Size 5% test -&gt; 75% belief on the null hypothesis. We are not making a neutral decision!</li>
+<li>Equivalent to finding slope <span class="arithmatex">\(= -\frac{\psi}{1-\psi}\)</span> of risk set at <span class="arithmatex">\(R(0, d) = 0.05\)</span></li>
+</ul>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../math/3601/ch6.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Chapter 6: Numerical Differentiation and ODE" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Chapter 6: Numerical Differentiation and ODE
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="ch2.html" class="md-footer__link md-footer__link--next" aria-label="Next: Chapter 2: Decision Problem: Bayesian Approach" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Chapter 2: Decision Problem: Bayesian Approach
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["tabs", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

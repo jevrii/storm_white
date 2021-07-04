@@ -1,0 +1,950 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
+    
+    
+      
+        <title>Chapter 5: Estimation - storm_white</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-5-estimation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="storm_white" class="md-header__button md-logo" aria-label="storm_white" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 21.35-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            storm_white
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 5: Estimation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/jevrii/storm_white/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jevrii/storm_white
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../index.html" class="md-tabs__link">
+      storm_white 雷白
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../math/3601/ch1.html" class="md-tabs__link">
+        Math
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="ch1.html" class="md-tabs__link md-tabs__link--active">
+        Stat
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="storm_white" class="md-nav__button md-logo" aria-label="storm_white" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 21.35-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"/></svg>
+
+    </a>
+    storm_white
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/jevrii/storm_white/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jevrii/storm_white
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        storm_white 雷白
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Math
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Math" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Math
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      <label class="md-nav__link" for="__nav_2_1">
+        3601
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3601" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          3601
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch1.html" class="md-nav__link">
+        Chapter 1: Preliminaries
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch2.html" class="md-nav__link">
+        Chapter 2: Solutions of Nonlinear Equations
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch3.html" class="md-nav__link">
+        Chapter 3: Numerical Linear Algebra
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch4.html" class="md-nav__link">
+        Chapter 4: Approximating functions
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch5.html" class="md-nav__link">
+        Chapter 5: Numerical Integration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch6.html" class="md-nav__link">
+        Chapter 6: Numerical Differentiation and ODE
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Stat
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Stat" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Stat
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+      
+      <label class="md-nav__link" for="__nav_3_1">
+        3602
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3602" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          3602
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch1.html" class="md-nav__link">
+        Chapter 1: Decision Problem: Frequentist Approach
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch2.html" class="md-nav__link">
+        Chapter 2: Decision Problem: Bayesian Approach
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch3.html" class="md-nav__link">
+        Chapter 3: Exponential Families
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch4.html" class="md-nav__link">
+        Chapter 4: Sufficiency and Likelihood
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Chapter 5: Estimation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="ch5.html" class="md-nav__link md-nav__link--active">
+        Chapter 5: Estimation
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rao-blackwell-theorem" class="md-nav__link">
+    Rao-Blackwell Theorem
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fisher-information" class="md-nav__link">
+    Fisher information
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#information-inequality-crlb" class="md-nav__link">
+    Information inequality, CRLB
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maximum-likelihood-estimator-mle" class="md-nav__link">
+    Maximum likelihood estimator (MLE)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#large-sample-properties-of-mle-asymptotic-distribution" class="md-nav__link">
+    Large sample properties of MLE, Asymptotic distribution
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch6.html" class="md-nav__link">
+        Chapter 6: Hypothesis testing
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        3620
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3620" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          3620
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3620/ch3.html" class="md-nav__link">
+        Chapter 3: k-Sample methods
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3620/ch4.html" class="md-nav__link">
+        Chapter 4: Paired Comparisons and Block Designs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3620/ch5.html" class="md-nav__link">
+        Chapter 5: Tests for Trends and Association
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rao-blackwell-theorem" class="md-nav__link">
+    Rao-Blackwell Theorem
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fisher-information" class="md-nav__link">
+    Fisher information
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#information-inequality-crlb" class="md-nav__link">
+    Information inequality, CRLB
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maximum-likelihood-estimator-mle" class="md-nav__link">
+    Maximum likelihood estimator (MLE)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#large-sample-properties-of-mle-asymptotic-distribution" class="md-nav__link">
+    Large sample properties of MLE, Asymptotic distribution
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/jevrii/storm_white/edit/master/docs/stat/3602/ch5.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="chapter-5-estimation">Chapter 5: Estimation</h1>
+<h2 id="rao-blackwell-theorem">Rao-Blackwell Theorem</h2>
+<p>Define <span class="arithmatex">\(\rho^* = \rho^*(T) = \mathbb{E}[\rho(X) | T]\)</span></p>
+<ol>
+<li><span class="arithmatex">\(\rho^*\)</span> is an estimator of <span class="arithmatex">\(\psi(\theta)\)</span> (it is a function of data, not depending on <span class="arithmatex">\(\theta\)</span>)</li>
+<li><span class="arithmatex">\(\mathbb{E}[L(\theta, \rho^*)] \leq \mathbb{E}[L(\theta, \rho)]\)</span> (MSE)</li>
+<li>If <span class="arithmatex">\(\rho\)</span> unbiased and <span class="arithmatex">\(T\)</span> complete for <span class="arithmatex">\(\theta\)</span>, then<ul>
+<li><span class="arithmatex">\(\rho^* = \rho^*(T)\)</span> is the <strong>only</strong> function of <span class="arithmatex">\(T\)</span> which is unbiased for <span class="arithmatex">\(\psi(\theta)\)</span></li>
+<li><span class="arithmatex">\(\forall\)</span> <strong>unbiased</strong> estimator <span class="arithmatex">\(S\)</span> of <span class="arithmatex">\(\psi(\theta)\)</span>, <span class="arithmatex">\(\mathbb{E}[L(\theta, \rho^*)] \leq \mathbb{E}[L(\theta, S)] \forall \theta\)</span> (UMVU estimator under squared loss)</li>
+</ul>
+</li>
+</ol>
+<div class="admonition success">
+<p class="admonition-title">Important implications</p>
+<p>Provide constructive way to find "optimal" (smallest risk &amp; unbiased) estimator (e.g. UMVU estimator) if complete sufficient statistic <span class="arithmatex">\(T\)</span> exists. Either:</p>
+<ul>
+<li>Choose any unbiased estimator <span class="arithmatex">\(\rho\)</span>, modify it to <span class="arithmatex">\(\rho^* = \mathbb[\rho|T]\)</span></li>
+<li>Find function <span class="arithmatex">\(g(T)\)</span> which is unbiased, then just use <span class="arithmatex">\(g(T)\)</span></li>
+</ul>
+<p>They will get the same result from 3.2.</p>
+<p>Also, Rao-Blackwell highlights an important use of complete sufficient statistic. This alone justifies our need to study the concept of <strong>completeness</strong>.</p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">Exam example: 2017</p>
+<p>... some calculations of MLE and complete sufficient statistic</p>
+<p>The mle <span class="arithmatex">\(\hat{\theta}\)</span> is a function of <span class="arithmatex">\(X-Y\)</span> according to (previous part). If it were unbiased for <span class="arithmatex">\(\theta\)</span>, then it must be identical to the UMVU estimator by Rao-Blackwell Theorem. That the two estimates differ on the data, which has a positive probability to be observed, implies that <span class="arithmatex">\(\hat{\theta}\)</span> cannot be unbiased for <span class="arithmatex">\(\theta\)</span>.</p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">Tutorial 9</p>
+<p>... calculate MLE which is biased then multiply it by a constant to make it unbiased</p>
+<p>... calculate CRLB</p>
+<p>... calculate variance of MLE using elementary techniques</p>
+<p>The CRLB is not attained by the unbiased estimator. In fact, as <span class="arithmatex">\(T\)</span> is a complete sufficient statistic, the CRLB cannot be attained by any unbiased estimator.</p>
+<p>(Re: Only <strong>one</strong> function of <span class="arithmatex">\(T\)</span> is unbiased estimator)</p>
+</div>
+<details class="example"><summary>Example</summary><p><img alt="ch5 rao blackwell eg" src="../images/ch5_rao_blackwell_eg.png" /></p>
+</details>
+<h2 id="fisher-information">Fisher information</h2>
+<div class="admonition question">
+<p class="admonition-title">Motivation</p>
+<p>Compare experiments and their likelihood functions. It is better to have a likelihood function that is "sharper" at the true value.</p>
+<p>Sharper means the negative of the second derivative of loglikelihood!</p>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Tip</p>
+<p><img alt="ch5 information matrix tip" src="../images/ch5_information_matrix_tip.png" /></p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Theorem: Information matrix</p>
+<p><img alt="ch5 information matrix" src="../images/ch5_information_matrix.png" /></p>
+</div>
+<h2 id="information-inequality-crlb">Information inequality, CRLB</h2>
+<div class="admonition important">
+<p class="admonition-title">Theorem</p>
+<p><img alt="ch5 information inequality" src="../images/ch5_information_inequality.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">CRLB</p>
+<p>CRLB: <span class="arithmatex">\(\text{Var}_\theta(\hat{\theta}_U) \geq \frac{1}{I(\theta)}\)</span></p>
+</div>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">Exam example: 2016</p>
+<p>You can put <span class="arithmatex">\(T\)</span> to be an (unbiased) estimator to check the variance of that estimator.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Regularity conditions</p>
+<ul>
+<li>Sample space <span class="arithmatex">\(S\)</span> must not depend on <span class="arithmatex">\(\theta\)</span><ul>
+<li><span class="arithmatex">\(U[0, \theta]\)</span> ruled out</li>
+</ul>
+</li>
+<li>Parameter space <span class="arithmatex">\(\theta\)</span> contains open rectangle<ul>
+<li>Discrete <span class="arithmatex">\(\theta\)</span> ruled out</li>
+</ul>
+</li>
+<li><span class="arithmatex">\(f(x|\theta)\)</span> twice differentiable w.r.t. <span class="arithmatex">\(\theta\)</span><ul>
+<li><span class="arithmatex">\(\text{Binomial}(\theta, p)\)</span> ruled out, <span class="arithmatex">\(\text{Binomial}(n, \theta)\)</span> ok</li>
+</ul>
+</li>
+</ul>
+<details class="question"><summary>What if the regularity assumptions are violated?</summary><p><img alt="ch5 violate regularity" src="../images/ch5_violate_regularity.png" /></p>
+</details>
+</div>
+<h2 id="maximum-likelihood-estimator-mle">Maximum likelihood estimator (MLE)</h2>
+<p>Obtained by solving likelihood equations: <span class="arithmatex">\(U(\theta) = \frac{\partial S_X(\theta)}{\partial \theta} = 0\)</span></p>
+<ul>
+<li>MLE is function of minimal sufficient statistic <span class="arithmatex">\(T\)</span>, but <span class="arithmatex">\(\hat{\theta}\)</span> may not be sufficient.</li>
+<li>MLE may not be unbiased</li>
+<li><span class="arithmatex">\(\hat{\theta}\)</span> mle of <span class="arithmatex">\(\theta\)</span>, then <span class="arithmatex">\(\psi(\hat{\theta})\)</span> mle of <span class="arithmatex">\(\psi(\theta)\)</span> </li>
+</ul>
+<h2 id="large-sample-properties-of-mle-asymptotic-distribution">Large sample properties of MLE, Asymptotic distribution</h2>
+<div class="admonition important">
+<p class="admonition-title">Asymptotic distribution of <span class="arithmatex">\(\hat{\theta}_n\)</span></p>
+<p><img alt="ch5 asymptotic distribution" src="../images/ch5_asymptotic_distribution.png" /></p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Abstract</p>
+<ul>
+<li><span class="arithmatex">\(\hat{\theta}_n \to \theta_0\)</span> in probability</li>
+<li><span class="arithmatex">\(\sqrt{n} (\hat{\theta}_n - \theta_0) \to N(0, \mathscr{I}(\theta_0)^{-1})\)</span> <strong>(very important!!!)</strong><ul>
+<li><span class="arithmatex">\(\mathscr{I}(\theta_0) = \lim_{n\to\infty} n^{-1}I(\theta_0)\)</span></li>
+<li><span class="arithmatex">\(\hat{\theta}_n \sim N(\theta_0, I(\theta_0)^{-1})\)</span> (inverse of Fisher information matrix)</li>
+</ul>
+</li>
+<li><span class="arithmatex">\(n^{-1/2} U(\theta_0) \to N(0, \mathscr{I}(\theta_0))\)</span></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Would <strong>not</strong> help if <span class="arithmatex">\(\psi(\hat{\theta}_n)\)</span> is changed to <span class="arithmatex">\(\mathbb{E}[\psi(\hat{\theta}_n) | \text{sufficient statistic}]\)</span>, as already <span class="arithmatex">\(\psi(\hat{\theta}_n) = \mathbb{E}[\psi(\hat{\theta}_n) | \text{sufficient statistic}]\)</span></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In practice, to obtain the asymptotic distribution from data, we can calculate <span class="arithmatex">\(\hat{\theta}_n\)</span> and <span class="arithmatex">\(I(\hat{\theta}_n)^{-1}\)</span> and treat them as <span class="arithmatex">\(\theta_0\)</span> and <span class="arithmatex">\(I(\theta_0)^{-1}\)</span> respectively.</p>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="ch4.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Chapter 4: Sufficiency and Likelihood" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Chapter 4: Sufficiency and Likelihood
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="ch6.html" class="md-footer__link md-footer__link--next" aria-label="Next: Chapter 6: Hypothesis testing" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Chapter 6: Hypothesis testing
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["tabs", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

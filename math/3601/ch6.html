@@ -1,0 +1,1037 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
+    
+    
+      
+        <title>Chapter 6: Numerical Differentiation and ODE - storm_white</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-6-numerical-differentiation-and-ode" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="storm_white" class="md-header__button md-logo" aria-label="storm_white" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 21.35-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            storm_white
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 6: Numerical Differentiation and ODE
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/jevrii/storm_white/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jevrii/storm_white
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../index.html" class="md-tabs__link">
+      storm_white 雷白
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="ch1.html" class="md-tabs__link md-tabs__link--active">
+        Math
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../stat/3602/ch1.html" class="md-tabs__link">
+        Stat
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="storm_white" class="md-nav__button md-logo" aria-label="storm_white" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 21.35-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"/></svg>
+
+    </a>
+    storm_white
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/jevrii/storm_white/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jevrii/storm_white
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        storm_white 雷白
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Math
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Math" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Math
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+      
+      <label class="md-nav__link" for="__nav_2_1">
+        3601
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3601" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          3601
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch1.html" class="md-nav__link">
+        Chapter 1: Preliminaries
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch2.html" class="md-nav__link">
+        Chapter 2: Solutions of Nonlinear Equations
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch3.html" class="md-nav__link">
+        Chapter 3: Numerical Linear Algebra
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch4.html" class="md-nav__link">
+        Chapter 4: Approximating functions
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch5.html" class="md-nav__link">
+        Chapter 5: Numerical Integration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Chapter 6: Numerical Differentiation and ODE
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="ch6.html" class="md-nav__link md-nav__link--active">
+        Chapter 6: Numerical Differentiation and ODE
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#numerical-differentiation" class="md-nav__link">
+    Numerical Differentiation
+  </a>
+  
+    <nav class="md-nav" aria-label="Numerical Differentiation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#differentiate-interpolating-polynomial" class="md-nav__link">
+    Differentiate interpolating polynomial
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finite-difference-schemes" class="md-nav__link">
+    Finite difference schemes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#richardson-extrapolation" class="md-nav__link">
+    Richardson Extrapolation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ivp-initial-value-problem" class="md-nav__link">
+    IVP (Initial Value Problem)
+  </a>
+  
+    <nav class="md-nav" aria-label="IVP (Initial Value Problem)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eulers-method" class="md-nav__link">
+    Euler's method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taylor-series-method" class="md-nav__link">
+    Taylor Series method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runge-kutta-method-2nd-order" class="md-nav__link">
+    Runge-Kutta method (2nd order)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bvp-boundary-value-problem" class="md-nav__link">
+    BVP (Boundary Value Problem)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convergence-analysis" class="md-nav__link">
+    Convergence analysis
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Stat
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Stat" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Stat
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      <label class="md-nav__link" for="__nav_3_1">
+        3602
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3602" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          3602
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stat/3602/ch1.html" class="md-nav__link">
+        Chapter 1: Decision Problem: Frequentist Approach
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stat/3602/ch2.html" class="md-nav__link">
+        Chapter 2: Decision Problem: Bayesian Approach
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stat/3602/ch3.html" class="md-nav__link">
+        Chapter 3: Exponential Families
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stat/3602/ch4.html" class="md-nav__link">
+        Chapter 4: Sufficiency and Likelihood
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stat/3602/ch5.html" class="md-nav__link">
+        Chapter 5: Estimation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stat/3602/ch6.html" class="md-nav__link">
+        Chapter 6: Hypothesis testing
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        3620
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3620" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          3620
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stat/3620/ch3.html" class="md-nav__link">
+        Chapter 3: k-Sample methods
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stat/3620/ch4.html" class="md-nav__link">
+        Chapter 4: Paired Comparisons and Block Designs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stat/3620/ch5.html" class="md-nav__link">
+        Chapter 5: Tests for Trends and Association
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#numerical-differentiation" class="md-nav__link">
+    Numerical Differentiation
+  </a>
+  
+    <nav class="md-nav" aria-label="Numerical Differentiation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#differentiate-interpolating-polynomial" class="md-nav__link">
+    Differentiate interpolating polynomial
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finite-difference-schemes" class="md-nav__link">
+    Finite difference schemes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#richardson-extrapolation" class="md-nav__link">
+    Richardson Extrapolation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ivp-initial-value-problem" class="md-nav__link">
+    IVP (Initial Value Problem)
+  </a>
+  
+    <nav class="md-nav" aria-label="IVP (Initial Value Problem)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eulers-method" class="md-nav__link">
+    Euler's method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taylor-series-method" class="md-nav__link">
+    Taylor Series method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runge-kutta-method-2nd-order" class="md-nav__link">
+    Runge-Kutta method (2nd order)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bvp-boundary-value-problem" class="md-nav__link">
+    BVP (Boundary Value Problem)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convergence-analysis" class="md-nav__link">
+    Convergence analysis
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/jevrii/storm_white/edit/master/docs/math/3601/ch6.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="chapter-6-numerical-differentiation-and-ode">Chapter 6: Numerical Differentiation and ODE</h1>
+<h2 id="numerical-differentiation">Numerical Differentiation</h2>
+<h3 id="differentiate-interpolating-polynomial">Differentiate interpolating polynomial</h3>
+<p>Interpolate the function then differentiate the function</p>
+<div class="admonition note">
+<p class="admonition-title">Error analysis</p>
+<div class="arithmatex">\[
+\begin{align*}
+f'(x_i) - p'(x_i) = \frac{1}{(n+1)!}f^{(n+1)}(\xi_x)\prod^n_{j=0, j \neq i}(x_i-x_j)\\
+\xi \in (a, b)
+\end{align*}
+\]</div>
+<div class="arithmatex">\[
+\begin{align*}
+f'(x) - p'(x) = \frac{1}{n!}f^{(n+1)}(\eta)\prod^{n-1}_{i=0}(x-\xi_i)\\
+\xi_i \in (x_i, x_{i+1}), \eta \text{ in interval containing } \{ \xi_0, \cdots, \xi_{n-1}, x \}
+\end{align*}
+\]</div>
+<details><summary>Raw image ptsd</summary><p><img alt="ch6 polynomial error 1" src="../images/ch6_polynomial_error_1.png" /></p>
+<p><img alt="ch6 polynomial error 2" src="../images/ch6_polynomial_error_2.png" /></p>
+</details>
+</div>
+<h3 id="finite-difference-schemes">Finite difference schemes</h3>
+<p><span class="arithmatex">\(\boxed{f'(x) \approx \frac{f(x+h)-f(x)}{h}}\)</span> is order 1 accuracy, because <span class="arithmatex">\(f'(x) = \frac{f(x+h)-f(x)}{h} - \frac{h}{2}f''(\xi)\)</span></p>
+<p><span class="arithmatex">\(\frac{h}{2}f''(\xi)\)</span> can give us a bound on the error.</p>
+<div class="admonition warning">
+<p class="admonition-title">Subtractive cancellation</p>
+<p>If we keep on decreasing <span class="arithmatex">\(h\)</span>, we will not neccessarily get better accuracy due to <strong>subtractive cancellation</strong>.</p>
+<p>The number of significant digits drops as difference of very close numbers are being calculated.</p>
+<p><strong>Roundoff error</strong> prevents us from getting better approximations by decreasing <span class="arithmatex">\(h\)</span>.</p>
+</div>
+<p><span class="arithmatex">\(\boxed{f'(x) \approx \frac{f(x+h)-f(x-h)}{2h}}\)</span> is order 2 accuracy</p>
+<details class="question"><summary>Proof</summary><p><img alt="ch6_central_difference_proof.png" src="../images/ch6_central_difference_proof.png" /></p>
+</details>
+<h3 id="richardson-extrapolation">Richardson Extrapolation</h3>
+<p>Let <span class="arithmatex">\(\varphi(h) = \frac{1}{2h}(f(x+h)-f(x-h))\)</span></p>
+<p>Richardson Extrapolation 4<sup>th</sup> order approximation: <span class="arithmatex">\(\boxed{\frac{4}{3}\varphi(h/2)-\frac{1}{3}\varphi(h)}\)</span></p>
+<details class="question"><summary>Proof</summary><p><img alt="ch6_richardson_proof.png" src="../images/ch6_richardson_proof.png" /></p>
+</details>
+<h2 id="ivp-initial-value-problem">IVP (Initial Value Problem)</h2>
+<p>Given that <span class="arithmatex">\(\boxed{\varphi'(t) = x' = f(t, x), x(t_0) = x_0}\)</span>, obtain a solution <span class="arithmatex">\(\boxed{x = \varphi(t)}\)</span></p>
+<p>By numerical solutions, we mean a sequence of approximated values of <span class="arithmatex">\(x\)</span> at a sequence of values of <span class="arithmatex">\(t\)</span>.</p>
+<p>Usually, denote <span class="arithmatex">\(h = t_i - t_{i-1}\)</span></p>
+<h3 id="eulers-method">Euler's method</h3>
+<div class="arithmatex">\[
+\varphi(t) \approx x_t = x_0 + f(t_0, x_0)(t - t_0)
+\]</div>
+<details class="example"><summary>Example</summary><p><img alt="ch6_euler_method_eg.png" src="../images/ch6_euler_method_eg.png" /></p>
+</details>
+<p>Global truncation error is <span class="arithmatex">\(O(h)\)</span>. Because the local truncation error in each step is <span class="arithmatex">\(\frac{1}{2}f''(\xi_i)h^2\)</span>, and we take <span class="arithmatex">\((t_i-t_0)/h\)</span> steps.</p>
+<p>Can achieve higher order, but it's complicated to derive formula for higher derivatives.</p>
+<h3 id="taylor-series-method">Taylor Series method</h3>
+<p>Expand the taylor series of <span class="arithmatex">\(\varphi(t = t_0 + h)\)</span>, then express the derivatives in terms of lower derivatives.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><img alt="ch6_taylor_series.png" src="../images/ch6_taylor_series.png" /></p>
+</div>
+<h3 id="runge-kutta-method-2nd-order">Runge-Kutta method (2<sup>nd</sup> order)</h3>
+<div class="arithmatex">\[
+\begin{align*}
+K_1 &amp;= f(t_i, x_i)\\
+\bar{x}_{i+1} &amp;= x_i + hf(t_i, x_i)\\
+K_2 &amp;= f(t_i + h, x_i + hK_1)\\
+x_{i+1} &amp;= x_i + h(K_1/2 + K_2/2)
+\end{align*}
+\]</div>
+<details class="example"><summary>Example</summary><p><img alt="ch6_runge_kutta_eg.png" src="../images/ch6_runge_kutta_eg.png" /></p>
+</details>
+<details><summary>Derivation (trapezoidal rule)</summary><p><img alt="ch6_runge_kutta_derive.png" src="../images/ch6_runge_kutta_derive.png" /></p>
+</details>
+<p>Local truncation error: <span class="arithmatex">\(O(h^3)\)</span></p>
+<details class="question"><summary>Proof</summary><p><img alt="ch6_runge_kutta_error.png" src="../images/ch6_runge_kutta_error.png" /></p>
+</details>
+<p>In general, can choose</p>
+<div class="arithmatex">\[
+\begin{align*}
+K_1 &amp;= f(t_i, x_i)\\
+\bar{x}_{i+1} &amp;= x_i + bhf(t_i, x_i)\\
+K_2 &amp;= f(t_i + ah, x_i + bhK_1)\\
+x_{i+1} &amp;= x_i + h(c_1K_1 + c_2K_2)\\
+c_1 + c_2 = 1, &amp; ac_2 = 1/2 = bc_2
+\end{align*}
+\]</div>
+<details><summary>Derivation (Taylor series)</summary><p><img alt="ch6_runge_kutta_general_derive.png" src="../images/ch6_runge_kutta_general_derive.png" /></p>
+</details>
+<h2 id="bvp-boundary-value-problem">BVP (Boundary Value Problem)</h2>
+<p>Given that <span class="arithmatex">\(\boxed{\varphi''(t) = x'' = f(t, x, x'), x(0) = \alpha, x_{n+1} = \beta}\)</span>, obtain a solution <span class="arithmatex">\(\boxed{x = \varphi(t)}\)</span></p>
+<p>Approximate</p>
+<ul>
+<li><span class="arithmatex">\(\boxed{f'(x) \approx \frac{1}{2h} (f(x+h)-f(x-h))}\)</span></li>
+<li><span class="arithmatex">\(\boxed{f''(x) \approx \frac{1}{h^2} (f(x+h)-2f(x)+f(x-h))}\)</span>, order 2</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Discretized BVP</p>
+<p><img alt="ch6_bvp_1.png" src="../images/ch6_bvp_1.png" /></p>
+</div>
+<p>Linear case: <span class="arithmatex">\(\boxed{x'' = f(t, x, x') = u(t) + v(t)x + w(t)x'}\)</span></p>
+<div class="admonition important">
+<p class="admonition-title">Discretized BVP (Linear case</p>
+<p><img alt="ch6_bvp_2.png" src="../images/ch6_bvp_2.png" /></p>
+</div>
+<p>Coefficient matrix is a tridiagonal matrix. It is strictly diagonally dominant (proof omitted) so inverse exists. It can be solved in <span class="arithmatex">\(O(n)\)</span>.</p>
+<h2 id="convergence-analysis">Convergence analysis</h2>
+<p>Basically, both Euler method and BVP converge when <span class="arithmatex">\(h \rightarrow 0\)</span> and <span class="arithmatex">\(n \rightarrow 0\)</span>. But we don't have to prove it.</p>
+<details class="abstract"><summary>Convergene of Euler method</summary><p><img alt="ch6_convergence_euler.png" src="../images/ch6_convergence_euler.png" /></p>
+</details>
+<details class="abstract"><summary>Convergene of finite difference BVP</summary><p><img alt="ch6_convergence_bvp.png" src="../images/ch6_convergence_bvp.png" /></p>
+</details>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="ch5.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Chapter 5: Numerical Integration" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Chapter 5: Numerical Integration
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../stat/3602/ch1.html" class="md-footer__link md-footer__link--next" aria-label="Next: Chapter 1: Decision Problem: Frequentist Approach" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Chapter 1: Decision Problem: Frequentist Approach
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["tabs", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

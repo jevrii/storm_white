@@ -1,0 +1,1312 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
+    
+    
+      
+        <title>Chapter 3: k-Sample methods - storm_white</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-3-k-sample-methods" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="storm_white" class="md-header__button md-logo" aria-label="storm_white" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 21.35-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            storm_white
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 3: k-Sample methods
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/jevrii/storm_white/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jevrii/storm_white
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../index.html" class="md-tabs__link">
+      storm_white 雷白
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../math/3601/ch1.html" class="md-tabs__link">
+        Math
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3602/ch1.html" class="md-tabs__link md-tabs__link--active">
+        Stat
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="storm_white" class="md-nav__button md-logo" aria-label="storm_white" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 21.35-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"/></svg>
+
+    </a>
+    storm_white
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/jevrii/storm_white/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jevrii/storm_white
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        storm_white 雷白
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Math
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Math" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Math
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      <label class="md-nav__link" for="__nav_2_1">
+        3601
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3601" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          3601
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch1.html" class="md-nav__link">
+        Chapter 1: Preliminaries
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch2.html" class="md-nav__link">
+        Chapter 2: Solutions of Nonlinear Equations
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch3.html" class="md-nav__link">
+        Chapter 3: Numerical Linear Algebra
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch4.html" class="md-nav__link">
+        Chapter 4: Approximating functions
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch5.html" class="md-nav__link">
+        Chapter 5: Numerical Integration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/3601/ch6.html" class="md-nav__link">
+        Chapter 6: Numerical Differentiation and ODE
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Stat
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Stat" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Stat
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      <label class="md-nav__link" for="__nav_3_1">
+        3602
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3602" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          3602
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3602/ch1.html" class="md-nav__link">
+        Chapter 1: Decision Problem: Frequentist Approach
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3602/ch2.html" class="md-nav__link">
+        Chapter 2: Decision Problem: Bayesian Approach
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3602/ch3.html" class="md-nav__link">
+        Chapter 3: Exponential Families
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3602/ch4.html" class="md-nav__link">
+        Chapter 4: Sufficiency and Likelihood
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3602/ch5.html" class="md-nav__link">
+        Chapter 5: Estimation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3602/ch6.html" class="md-nav__link">
+        Chapter 6: Hypothesis testing
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" checked>
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        3620
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3620" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          3620
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Chapter 3: k-Sample methods
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="ch3.html" class="md-nav__link md-nav__link--active">
+        Chapter 3: k-Sample methods
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#parametric-method-based-on-normality-assumption" class="md-nav__link">
+    Parametric method based on Normality Assumption
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permutation-f-test" class="md-nav__link">
+    Permutation F-test
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kruskal-wallis-test-anova-based-on-ranks" class="md-nav__link">
+    Kruskal-Wallis Test (ANOVA based on ranks)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-comparisons" class="md-nav__link">
+    Multiple comparisons
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiple comparisons">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bonferroni-adjustment-union-bound" class="md-nav__link">
+    Bonferroni Adjustment (union bound)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fishers-protected-least-significant-difference-lsd-use-mse-instead-of-two-sample-error-in-t-test" class="md-nav__link">
+    Fisher's Protected Least Significant Difference (LSD) (use MSE instead of two-sample error in t-test)
+  </a>
+  
+    <nav class="md-nav" aria-label="Fisher's Protected Least Significant Difference (LSD) (use MSE instead of two-sample error in t-test)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rank-based-fishers-lsd-procedure-for-large-samples" class="md-nav__link">
+    Rank-based Fisher's LSD Procedure for Large Samples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tukeys-honesty-significant-difference-hsd-largest-difference-between-sample-means-among-all-pairs" class="md-nav__link">
+    Tukey's Honesty Significant Difference (HSD) (largest difference between sample means among all pairs)
+  </a>
+  
+    <nav class="md-nav" aria-label="Tukey's Honesty Significant Difference (HSD) (largest difference between sample means among all pairs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rank-based-tukeys-hsd-procedure-for-large-samples" class="md-nav__link">
+    Rank-based Tukey's HSD Procedure for Large Samples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tukeys-hsd-vs-fishers-lsd" class="md-nav__link">
+    Tukey's HSD vs Fisher's LSD
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-comparison-permutation-tests" class="md-nav__link">
+    Multiple comparison permutation tests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ordered-alternatives-jt-test" class="md-nav__link">
+    Ordered alternatives: JT test
+  </a>
+  
+    <nav class="md-nav" aria-label="Ordered alternatives: JT test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#large-sample-approximation" class="md-nav__link">
+    Large sample approximation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch4.html" class="md-nav__link">
+        Chapter 4: Paired Comparisons and Block Designs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ch5.html" class="md-nav__link">
+        Chapter 5: Tests for Trends and Association
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#parametric-method-based-on-normality-assumption" class="md-nav__link">
+    Parametric method based on Normality Assumption
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permutation-f-test" class="md-nav__link">
+    Permutation F-test
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kruskal-wallis-test-anova-based-on-ranks" class="md-nav__link">
+    Kruskal-Wallis Test (ANOVA based on ranks)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-comparisons" class="md-nav__link">
+    Multiple comparisons
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiple comparisons">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bonferroni-adjustment-union-bound" class="md-nav__link">
+    Bonferroni Adjustment (union bound)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fishers-protected-least-significant-difference-lsd-use-mse-instead-of-two-sample-error-in-t-test" class="md-nav__link">
+    Fisher's Protected Least Significant Difference (LSD) (use MSE instead of two-sample error in t-test)
+  </a>
+  
+    <nav class="md-nav" aria-label="Fisher's Protected Least Significant Difference (LSD) (use MSE instead of two-sample error in t-test)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rank-based-fishers-lsd-procedure-for-large-samples" class="md-nav__link">
+    Rank-based Fisher's LSD Procedure for Large Samples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tukeys-honesty-significant-difference-hsd-largest-difference-between-sample-means-among-all-pairs" class="md-nav__link">
+    Tukey's Honesty Significant Difference (HSD) (largest difference between sample means among all pairs)
+  </a>
+  
+    <nav class="md-nav" aria-label="Tukey's Honesty Significant Difference (HSD) (largest difference between sample means among all pairs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rank-based-tukeys-hsd-procedure-for-large-samples" class="md-nav__link">
+    Rank-based Tukey's HSD Procedure for Large Samples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tukeys-hsd-vs-fishers-lsd" class="md-nav__link">
+    Tukey's HSD vs Fisher's LSD
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-comparison-permutation-tests" class="md-nav__link">
+    Multiple comparison permutation tests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ordered-alternatives-jt-test" class="md-nav__link">
+    Ordered alternatives: JT test
+  </a>
+  
+    <nav class="md-nav" aria-label="Ordered alternatives: JT test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#large-sample-approximation" class="md-nav__link">
+    Large sample approximation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/jevrii/storm_white/edit/master/docs/stat/3620/ch3.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="chapter-3-k-sample-methods">Chapter 3: k-Sample methods</h1>
+<p>When there are more than two treatments:</p>
+<ul>
+<li>Do an overall comparison to determine whether or not there are differences among the <span class="arithmatex">\(k\)</span> samples</li>
+<li>If the differences are found, we perform multiple comparisons to further detect which treatments differ from each other.</li>
+</ul>
+<p>Test between</p>
+<ul>
+<li><span class="arithmatex">\(H_0: F_1(x) = F_2(x) = \cdots = F_k(x)\)</span> for all <span class="arithmatex">\(x\)</span>, and</li>
+<li><span class="arithmatex">\(H_1: F_i(x) \leq F_j(x)\)</span> or <span class="arithmatex">\(F_i(x) \geq F_j(x)\)</span> for at least one pair with strict inequality holding for at least one <span class="arithmatex">\(x\)</span>.</li>
+</ul>
+<p>Alternatively, let <span class="arithmatex">\(F_i(x) = F(x - \mu_i)\)</span>. Then the hypothesis become</p>
+<ul>
+<li><span class="arithmatex">\(H_0: \mu_1(x) = \mu_2(x) = \cdots = \mu_k(x)\)</span> for all <span class="arithmatex">\(x\)</span>, and</li>
+<li><span class="arithmatex">\(H_1: \mu_i\)</span> are not all equal</li>
+</ul>
+<h2 id="parametric-method-based-on-normality-assumption">Parametric method based on Normality Assumption</h2>
+<p><span class="arithmatex">\(X_{ij} = \mu_{i} + \epsilon_{ij}\)</span></p>
+<p><span class="arithmatex">\(SST = SSB + SSE\)</span></p>
+<p>F-test: <span class="arithmatex">\(F = \frac{SSB/(k-1)}{SSE/(N-k)} \sim F(k-1, N-k)\)</span> under <span class="arithmatex">\(H_0\)</span>, large <span class="arithmatex">\(F\)</span> values favor the rejection of <span class="arithmatex">\(H_0\)</span>.</p>
+<p>However, if we are unwilling to assume that the population distributions are normal, we may carry out a permutation version of F-test instead.</p>
+<h2 id="permutation-f-test">Permutation F-test</h2>
+<ol>
+<li>Compute the F-statistic for the observed data, denoted <span class="arithmatex">\(F_{obs}\)</span>.</li>
+<li>For each of the <span class="arithmatex">\(\frac{N!}{n_1!n_2! \cdots n_k!}\)</span> permutations (or a random sample of the permutations), compute the F-statistic</li>
+<li>Calculate the p-value as the fraction of the F's that are greater than or equal to <span class="arithmatex">\(F_{obs}\)</span>.</li>
+</ol>
+<p>Can also perform permutation test based on <span class="arithmatex">\(SSB = \sum^k_{i=1}n_i(\bar{X_i} - \bar{X})^2\)</span> or <span class="arithmatex">\(SSX = \sum^k_{i=1} n_i \bar{X_i}^2\)</span> as the test statistic.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that <strong>for large samples, the permutation
+distribution may be approximated by the F-distribution. In other words, the ANOVA
+test may well approximate the permutation F-test.</strong></p>
+<p>This is easy to conprehend since sample
+means will be normally distributed for large samples, according to the Central Limit Theorem.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In practice, the ANOVA test is relatively robust to departures from the normality assumption
+but it is sensitive to departures from the <strong>constant variance assumption</strong>. <a href="http://www.sthda.com/english/wiki/compare-multiple-sample-variances-in-r">link</a></p>
+</div>
+<details class="example"><summary>Example 3.1</summary><p>Three preservatives were compared to see their ability to inhibit the growth of
+bacteria. Samples were treated with one of the preservatives at the same time or left untreated
+as a control. After 48 hours, bacteria counts were made. The logarithms of the counts (Why?)
+were computed to meet ANOVA assumptions, recorded as the table:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ctrl</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">4.302</span><span class="p">,</span> <span class="m">4.017</span><span class="p">,</span> <span class="m">4.049</span><span class="p">,</span> <span class="m">4.176</span><span class="p">)</span>
+<span class="n">pre1</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">2.021</span><span class="p">,</span> <span class="m">3.190</span><span class="p">,</span> <span class="m">3.250</span><span class="p">,</span> <span class="m">3.276</span><span class="p">,</span> <span class="m">3.292</span><span class="p">,</span> <span class="m">3.267</span><span class="p">)</span>
+<span class="n">pre2</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">3.397</span><span class="p">,</span> <span class="m">3.552</span><span class="p">,</span> <span class="m">3.630</span><span class="p">,</span> <span class="m">3.578</span><span class="p">,</span> <span class="m">3.612</span><span class="p">)</span>
+<span class="n">pre3</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">2.699</span><span class="p">,</span> <span class="m">2.929</span><span class="p">,</span> <span class="m">2.785</span><span class="p">,</span> <span class="m">2.176</span><span class="p">,</span> <span class="m">2.845</span><span class="p">,</span> <span class="m">2.913</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">ctrl</span><span class="p">,</span> <span class="n">pre1</span><span class="p">,</span> <span class="n">pre2</span><span class="p">,</span> <span class="n">pre3</span><span class="p">)</span>
+<span class="n">grps</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;ctrl&quot;</span><span class="p">,</span><span class="s">&quot;pre1&quot;</span><span class="p">,</span><span class="s">&quot;pre2&quot;</span><span class="p">,</span><span class="s">&quot;pre3&quot;</span><span class="p">),</span> <span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">))</span>
+<span class="c1"># grps = rep(1:4, c(4,6,5,6))</span>
+
+<span class="n">dat</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">grps</span><span class="p">)</span>
+<span class="nf">aggregate</span><span class="p">(</span><span class="n">x</span> <span class="o">~</span> <span class="n">grps</span><span class="p">,</span> <span class="n">dat</span><span class="p">,</span> <span class="n">mean</span><span class="p">)</span>    <span class="c1"># compute group means</span>
+
+<span class="c1"># one-way ANOVA model</span>
+<span class="n">onewayanova</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="nf">aov</span><span class="p">(</span><span class="n">x</span> <span class="o">~</span> <span class="nf">factor</span><span class="p">(</span><span class="n">grps</span><span class="p">)))</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">onewayanova</span><span class="p">)</span>
+
+<span class="nf">str</span><span class="p">(</span><span class="nf">summary</span><span class="p">(</span><span class="n">onewayanova</span><span class="p">))</span>
+<span class="n">Fobs</span> <span class="o">&lt;-</span> <span class="nf">summary</span><span class="p">(</span><span class="n">onewayanova</span><span class="p">)[[</span><span class="m">1</span><span class="p">]][</span><span class="m">1</span><span class="p">,</span><span class="m">4</span><span class="p">]</span>
+<span class="n">Fobs</span>
+
+<span class="c1"># Permutation-F test</span>
+<span class="n">R</span> <span class="o">&lt;-</span> <span class="m">9999</span>
+<span class="n">reps</span> <span class="o">&lt;-</span> <span class="nf">numeric</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+
+<span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">R</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">permdat</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">dat</span><span class="o">$</span><span class="n">x</span><span class="p">,</span>
+<span class="n">grps</span><span class="o">=</span><span class="nf">sample</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">grps</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nf">dim</span><span class="p">(</span><span class="n">dat</span><span class="p">)[</span><span class="m">1</span><span class="p">],</span> <span class="n">replace</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">))</span>
+<span class="n">permanova</span> <span class="o">&lt;-</span> <span class="nf">aov</span><span class="p">(</span><span class="n">x</span> <span class="o">~</span> <span class="nf">factor</span><span class="p">(</span><span class="n">grps</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">permdat</span><span class="p">)</span>
+<span class="n">reps</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">summary</span><span class="p">(</span><span class="n">permanova</span><span class="p">)[[</span><span class="m">1</span><span class="p">]][</span><span class="m">1</span><span class="p">,</span><span class="m">4</span><span class="p">]</span> <span class="c1"># extract the ith permuted F statistic</span>
+<span class="p">}</span>
+<span class="n">pvalue</span> <span class="o">&lt;-</span> <span class="nf">mean</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">Fobs</span><span class="p">,</span> <span class="n">reps</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">Fobs</span><span class="p">)</span> <span class="c1"># always an upper-tailed test</span>
+<span class="n">pvalue</span>
+
+<span class="nf">hist</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">Fobs</span><span class="p">,</span><span class="n">reps</span><span class="p">),</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;Null distribution of F statistic&quot;</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="n">Fobs</span><span class="p">,</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span> <span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&gt; # one-way ANOVA model
+&gt; onewayanova &lt;- (aov(x ~ factor(grps)))
+&gt; summary(onewayanova)
+Df Sum Sq Mean Sq F value Pr(&gt;F)
+factor(grps) 3 5.476 1.8254 17.66 1.82e-05 ***
+Residuals 17 1.757 0.1034
+–-
+Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+&gt;
+&gt; str(summary(onewayanova))
+List of 1
+$ :Classes ‘anova’ and ’data.frame’: 2 obs. of 5 variables:
+..$ Df : num [1:2] 3 17
+..$ Sum Sq : num [1:2] 5.48 1.76
+..$ Mean Sq: num [1:2] 1.825 0.103
+..$ F value: num [1:2] 17.7 NA
+..$ Pr(&gt;F) : num [1:2] 1.82e-05 NA
+- attr(*, &quot;class&quot;)= chr [1:2] &quot;summary.aov&quot; &quot;listof&quot;
+&gt; Fobs &lt;- summary(onewayanova)[[1]][1,4]
+&gt; Fobs
+[1] 17.65729
+</code></pre></div>
+<p>One-way ANOVA has F-statistic = 17:66 with p-value = 0:000018 while the permutation F-test
+based on R = 10000 random permutations gives the exact p-value = 0:0001 (is this OK?).</p>
+<p>Close agreement is found between the two p-values. Note that <strong>for large samples, the permutation
+distribution may be approximated by the F-distribution. In other words, the ANOVA
+test may well approximate the permutation F-test.</strong> This is easy to conprehend since <strong>sample
+means will be normally distributed for large samples, according to the Central Limit Theorem.</strong></p>
+</details>
+<h2 id="kruskal-wallis-test-anova-based-on-ranks">Kruskal-Wallis Test (ANOVA based on ranks)</h2>
+<div class="admonition important">
+<p class="admonition-title">Objective</p>
+<p>Obtaining a statistic based on <strong>ranks</strong>, similar to Wilcoxcon test.</p>
+<p>Approximating permutation test using chi-square, useful for large sample size.</p>
+</div>
+<p>Rank the data combining all treatments. Let <span class="arithmatex">\(\bar{R_i}\)</span> denote the mean of the ranks of treatment <span class="arithmatex">\(i\)</span>'s observations, assuming the data have no ties.</p>
+<p>The <strong>Kruskal-Wallis statistic</strong> is defined as:</p>
+<div class="arithmatex">\[
+KW = \frac{12}{N(N+1)}\sum^k_{i=1}n_i\left(\bar{R_i}-\frac{N+1}{2}\right)^2 = \frac{12}{N(N+1)} \sum^k_{i=1} n_i (\bar{R_i})^2 - 3(N+1)
+\]</div>
+<ul>
+<li>where <span class="arithmatex">\(\frac{N+1}{2}\)</span> is the overall mean of all ranks and <span class="arithmatex">\(\sum^k_{i=1}n_i\left(\bar{R_i}-\frac{N+1}{2}\right)^2\)</span> can be viewed as the <span class="arithmatex">\(SSB\)</span> on ranks. (recall <span class="arithmatex">\(SSB = \sum^k_{i=1}n_i(\bar{X_i} - \bar{X})^2\)</span>)</li>
+<li><span class="arithmatex">\(\frac{12}{N(N+1)}\)</span> is a constant scaling factor to make the <span class="arithmatex">\(KW\)</span> statistic to follow <strong>approximately</strong> a chi-square distribution under <span class="arithmatex">\(H_0\)</span>, i.e. <span class="arithmatex">\(KW \sim \chi^2(k-1)\)</span>. (note that <span class="arithmatex">\(E[\sum^k_{i=1}n_i\left(\bar{R_i}-\frac{N+1}{2}\right)^2] = \frac{N(N+1)}{12}(k-1)\)</span>, we want <span class="arithmatex">\(E[KW] = k-1\)</span>.<ul>
+<li><span class="arithmatex">\(E[\left(\bar{R_i}-\frac{N+1}{2}\right)^2] = Var(\bar{R_i}) + (E[\bar{R_i}] - \frac{N+1}{2})^2 = \frac{1}{n_i^2}\frac{n_i(N-n_i)\sigma^2}{N-1}\)</span></li>
+<li>Can get the result from p.20 Expectation and Variance of Wilcoxon statistic. But here we are using average rank instead of rank sum, so divide by <span class="arithmatex">\({n_i^2}\)</span></li>
+<li><span class="arithmatex">\(\sigma = \frac{(N-1)(N+1)}{12}\)</span></li>
+</ul>
+</li>
+</ul>
+<p>The "exact" p-value of the <span class="arithmatex">\(KW\)</span> test can be obtained by using the permutation method.</p>
+<p>Reject when the upper <span class="arithmatex">\(\alpha\)</span>% critical value from the chi-square table is less than <span class="arithmatex">\(KW\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The permutation <span class="arithmatex">\(KW\)</span> test tends to have smaller critical values than the chi-square critical values. Hence, if we use the chi-square approximation, rejection of the null hypothesis will assure the same result with the exact <span class="arithmatex">\(KW\)</span> test, and the exact p-value will be smaller.</p>
+</div>
+<details class="example"><summary>Example 3.2</summary><p>Continue to use the data from example 3.1, but this time the sample size <span class="arithmatex">\(N = 21\)</span> is moderately large.</p>
+<p><span class="arithmatex">\(KW = \cdots = 17.14\)</span>, <span class="arithmatex">\(KW \sim \chi^2(3)\)</span> under <span class="arithmatex">\(H_0\)</span>, the upper 1% critical value from the chi-square table is <span class="arithmatex">\(11.34\)</span>. Thus the test is significant at the 1% level and <span class="arithmatex">\(H_0\)</span> should be rejected.</p>
+<div class="highlight"><pre><span></span><code><span class="n">ctrl</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">4.302</span><span class="p">,</span> <span class="m">4.017</span><span class="p">,</span> <span class="m">4.049</span><span class="p">,</span> <span class="m">4.176</span><span class="p">)</span>
+<span class="n">pre1</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">2.021</span><span class="p">,</span> <span class="m">3.190</span><span class="p">,</span> <span class="m">3.250</span><span class="p">,</span> <span class="m">3.276</span><span class="p">,</span> <span class="m">3.292</span><span class="p">,</span> <span class="m">3.267</span><span class="p">)</span>
+<span class="n">pre2</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">3.397</span><span class="p">,</span> <span class="m">3.552</span><span class="p">,</span> <span class="m">3.630</span><span class="p">,</span> <span class="m">3.578</span><span class="p">,</span> <span class="m">3.612</span><span class="p">)</span>
+<span class="n">pre3</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">2.699</span><span class="p">,</span> <span class="m">2.929</span><span class="p">,</span> <span class="m">2.785</span><span class="p">,</span> <span class="m">2.176</span><span class="p">,</span> <span class="m">2.845</span><span class="p">,</span> <span class="m">2.913</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">ctrl</span><span class="p">,</span> <span class="n">pre1</span><span class="p">,</span> <span class="n">pre2</span><span class="p">,</span> <span class="n">pre3</span><span class="p">)</span>
+<span class="n">grps</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;ctrl&quot;</span><span class="p">,</span><span class="s">&quot;pre1&quot;</span><span class="p">,</span><span class="s">&quot;pre2&quot;</span><span class="p">,</span><span class="s">&quot;pre3&quot;</span><span class="p">),</span> <span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">))</span>
+<span class="c1"># grps = rep(1:4, c(4,6,5,6))</span>
+
+<span class="n">dat</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">grps</span><span class="p">)</span>
+<span class="nf">aggregate</span><span class="p">(</span><span class="n">x</span> <span class="o">~</span> <span class="n">grps</span><span class="p">,</span> <span class="n">dat</span><span class="p">,</span> <span class="n">mean</span><span class="p">)</span>    <span class="c1"># compute group means</span>
+
+<span class="c1"># K-W test </span>
+<span class="nf">kruskal.test</span><span class="p">(</span><span class="n">x</span> <span class="o">~</span> <span class="n">grps</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="p">)</span>
+
+<span class="c1"># Alternative way of computing the K-W test statistic</span>
+<span class="n">rank.x</span> <span class="o">=</span> <span class="nf">rank</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="nf">aov</span><span class="p">(</span><span class="n">rank.x</span> <span class="o">~</span> <span class="nf">factor</span><span class="p">(</span><span class="n">grps</span><span class="p">)))</span>
+<span class="n">SSB</span> <span class="o">=</span> <span class="nf">summary</span><span class="p">(</span><span class="nf">aov</span><span class="p">(</span><span class="n">rank.x</span> <span class="o">~</span> <span class="nf">factor</span><span class="p">(</span><span class="n">grps</span><span class="p">)))[[</span><span class="m">1</span><span class="p">]][</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">]</span>
+<span class="n">SR2</span> <span class="o">=</span> <span class="nf">var</span><span class="p">(</span><span class="n">rank.x</span><span class="p">)</span>
+<span class="n">KW</span> <span class="o">=</span> <span class="n">SSB</span><span class="o">/</span><span class="n">SR2</span>
+
+<span class="c1"># Exact p-value using permutation test</span>
+<span class="n">R</span> <span class="o">&lt;-</span> <span class="m">9999</span>
+<span class="n">reps</span> <span class="o">&lt;-</span> <span class="nf">numeric</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+
+<span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">R</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">permdat</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">rank.x</span><span class="p">,</span>
+<span class="n">grps</span><span class="o">=</span><span class="nf">sample</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">grps</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nf">dim</span><span class="p">(</span><span class="n">dat</span><span class="p">)[</span><span class="m">1</span><span class="p">],</span> <span class="n">replace</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">))</span>
+<span class="n">permkw</span> <span class="o">&lt;-</span> <span class="nf">aov</span><span class="p">(</span><span class="n">x</span> <span class="o">~</span> <span class="nf">factor</span><span class="p">(</span><span class="n">grps</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">permdat</span><span class="p">)</span>
+<span class="n">reps</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">summary</span><span class="p">(</span><span class="n">permkw</span><span class="p">)[[</span><span class="m">1</span><span class="p">]][</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">SR2</span>
+<span class="p">}</span>
+<span class="n">pvalue</span> <span class="o">&lt;-</span> <span class="nf">mean</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">KW</span><span class="p">,</span> <span class="n">reps</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">KW</span><span class="p">)</span> <span class="c1"># always an upper-tailed test</span>
+<span class="n">pvalue</span>
+
+<span class="nf">hist</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">KW</span><span class="p">,</span><span class="n">reps</span><span class="p">),</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;Null distribution of KW statistic&quot;</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="n">KW</span><span class="p">,</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span> <span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Adjustment for ties</p>
+<p>When data are tied, we adjust the ranks using the <strong>mid-ranks</strong> for tied data as we did for the Wilcoxon test. The permutation method can also be applied to the <span class="arithmatex">\(KW\)</span> statistic.</p>
+<p>However, in order to maintain the chi-square approximation, the <span class="arithmatex">\(KW\)</span> statistic should be modified:</p>
+<div class="arithmatex">\[
+KW_{ties} = \frac{KW}{1-\frac{\sum^g_{i=1}{(t_i^3-t_i)}}{N^3-N}}
+\]</div>
+<div class="admonition abstract">
+<p class="admonition-title">Code</p>
+<ul>
+<li>If no ties, use <code>kruskal.test</code> function in the base <code>R</code> installation.</li>
+<li>If ties exist, use <code>kruskal_test</code> function in the <code>R</code> add-on package <code>coin</code>.</li>
+</ul>
+</div>
+</div>
+<h2 id="multiple-comparisons">Multiple comparisons</h2>
+<p>We want more details of the differences to know the location of the differences.</p>
+<p>Either we do 2-sample tests for each pair, but this will induce higher type I error. (If independent, then <span class="arithmatex">\(1-0.95^3\)</span>)</p>
+<div class="admonition success">
+<p class="admonition-title">Aim: Control the type-I error while performing pairwise tests</p>
+</div>
+<h3 id="bonferroni-adjustment-union-bound">Bonferroni Adjustment (union bound)</h3>
+<p>Use <span class="arithmatex">\(\alpha_i = \frac{\alpha}{k(k-1)/2}\)</span>.</p>
+<p>Bonferroni inequality (union bound): <span class="arithmatex">\(P(E_1 \cup \cdots \cup E_m) \leq P(E_1) + \cdots + P(E_m)\)</span></p>
+<ul>
+<li>Too conservative, high rate of type II error (false negative)</li>
+<li>Very wide confidence interval</li>
+</ul>
+<h3 id="fishers-protected-least-significant-difference-lsd-use-mse-instead-of-two-sample-error-in-t-test">Fisher's Protected Least Significant Difference (LSD) (use MSE instead of two-sample error in t-test)</h3>
+<ol>
+<li>Perform F-test for equality of means (ANOVA). </li>
+<li>If result of F-test is to accept H0 (all same), then stop.</li>
+<li>Perform all pairwise t-tests at significance level <span class="arithmatex">\(\alpha\)</span>.</li>
+</ol>
+<div class="arithmatex">\[
+|\bar{X_i} - \bar{X_j}| \geq t_{\alpha/2, N-k} \sqrt{MSE(\frac{1}{n_i} + \frac{1}{n_j})}
+\]</div>
+<ul>
+<li>Can use <span class="arithmatex">\(\alpha/2\)</span> significance level</li>
+<li>But type I error may be greater than <span class="arithmatex">\(\alpha\)</span></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Why use t?</p>
+<ul>
+<li>Difference follows normal distribution</li>
+<li>MSE is chi squared.</li>
+<li><span class="arithmatex">\(\frac{Z}{\sqrt{\chi^2/n}} \tilde t_n\)</span></li>
+</ul>
+</div>
+<h4 id="rank-based-fishers-lsd-procedure-for-large-samples">Rank-based Fisher's LSD Procedure for Large Samples</h4>
+<ul>
+<li>Benefit of using ranks: Less sensitive to outliers</li>
+</ul>
+<ol>
+<li>Perform KW-test for equality</li>
+<li>Stop if result is to accept H0</li>
+<li>Perform all pariwise <span class="arithmatex">\(z\)</span>-tests at significance level <span class="arithmatex">\(\alpha\)</span>.</li>
+</ol>
+<div class="arithmatex">\[
+|\bar{R_i} - \bar{R_j}| \geq z_{\alpha/2} \sqrt{S_R^2(\frac{1}{n_i} + \frac{1}{n_j})}
+\]</div>
+<ul>
+<li>Can use normal critical value because </li>
+<li><span class="arithmatex">\(S^2_R = \frac{N(N+1)}{12}\)</span> or <span class="arithmatex">\(\frac{N(N+1)}{12} - \frac{\sum^g_{i=1}(t_i^3-t_i)}{12(N-1)}\)</span> (if ties exist)</li>
+<li><span class="arithmatex">\(Var(\bar{R_i} - \bar{R_j}) = S_R^2(\frac{1}{n_i} + \frac{1}{n_j})\)</span></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Why use normal instead of t?</p>
+<ul>
+<li><span class="arithmatex">\(S_R^2\)</span> is constant (variance of ranks is constant)</li>
+<li>The only random thing is <span class="arithmatex">\(|\bar{R_i} - \bar{R_j}|\)</span>, which is normal (large sample approximation).</li>
+</ul>
+</div>
+<h3 id="tukeys-honesty-significant-difference-hsd-largest-difference-between-sample-means-among-all-pairs">Tukey's Honesty Significant Difference (HSD) (largest difference between sample means among all pairs)</h3>
+<div class="admonition warning">
+<p class="admonition-title">Suppose populations are normally distributed and sample sizes are equal.</p>
+</div>
+<div class="arithmatex">\[
+Q = \max_{i=j}\frac{\sqrt{n}|\bar{X_i} - \bar{X_j}|}{\sqrt{MSE}}
+\]</div>
+<p>MSE is for combined sample.</p>
+<div class="arithmatex">\[
+|\bar{X_i} - \bar{X_j}| \geq q(\alpha, k, df)\sqrt{\frac{MSE}{n}}, df = N-k
+\]</div>
+<ul>
+<li>Look up <span class="arithmatex">\(q\)</span>-distribution table</li>
+<li>Guarntee experiment-wise error rate to be exactly <span class="arithmatex">\(\alpha\)</span>.</li>
+</ul>
+<details class="note"><summary>Unequal sample size: Tukey-Kramer procedure</summary><div class="arithmatex">\[
+|\bar{X_i} - \bar{X_j}| \geq q(\alpha, k, df)\sqrt{\frac{MSE}{2}(\frac{1}{n_i} + \frac{1}{n_j})}
+\]</div>
+<p>Conservative, error rate <span class="arithmatex">\(\leq \alpha\)</span>.</p>
+</details>
+<h4 id="rank-based-tukeys-hsd-procedure-for-large-samples">Rank-based Tukey's HSD Procedure for Large Samples</h4>
+<div class="arithmatex">\[
+|\bar{R_i} - \bar{R_j}| \geq q(\alpha, k, \infty)\sqrt{\frac{S^2_R}{n}}
+\]</div>
+<p><span class="arithmatex">\(df = \infty\)</span> because of large samples. </p>
+<details class="note"><summary>Unequal sample size</summary><div class="arithmatex">\[
+|\bar{R_i} - \bar{R_j}| \geq q(\alpha, k, df)\sqrt{\frac{S^2_R}{2}(\frac{1}{n_i} + \frac{1}{n_j})}
+\]</div>
+</details>
+<h3 id="tukeys-hsd-vs-fishers-lsd">Tukey's HSD vs Fisher's LSD</h3>
+<ul>
+<li>HSD: <span class="arithmatex">\(H_0\)</span>: All pairs are the same</li>
+<li>LSD: <span class="arithmatex">\(H_0\)</span>: All pairs are the same, <span class="arithmatex">\(\mu_1 = \mu_2 = \cdots\)</span>.</li>
+</ul>
+<p>The <span class="arithmatex">\(H_0\)</span> for LSD spans over a greater space. So the Type I error of LSD will be smaller(?)</p>
+<p>Two-step HSD: Evaluate the significance of the one-way ANOVA before proceeding to HSD. Replace <span class="arithmatex">\(q(\alpha, k, df)\)</span> with <span class="arithmatex">\(q(\alpha, k-1, df)\)</span>.</p>
+<h2 id="multiple-comparison-permutation-tests">Multiple comparison permutation tests</h2>
+<p>Bonferroni Permutation Tests:</p>
+<ul>
+<li>Perform 2-sample permutation tests (e.g. permutation <span class="arithmatex">\(t\)</span>-test or Wilcoxon rank sum test) on all pairs of treatments and compare the permutation <span class="arithmatex">\(p\)</span>-value for each pair with the significance level <span class="arithmatex">\(\alpha' = \frac{\alpha}{k(k-1)/2}\)</span><ul>
+<li>Note that when comparing treatment <span class="arithmatex">\(i\)</span> to treatment <span class="arithmatex">\(j\)</span>, should re-rank from <span class="arithmatex">\([1, n_i+n_j]\)</span>.</li>
+</ul>
+</li>
+<li>If the <span class="arithmatex">\(p\)</span>-value for one pair is less than <span class="arithmatex">\(\alpha'\)</span>, declare significant difference between this pair of treatments.</li>
+</ul>
+<p>Fisher's Protected LSD Permutation Tests:</p>
+<ul>
+<li>Perform a permutation test to test if there is any difference among the <span class="arithmatex">\(k\)</span> treatments at significance level <span class="arithmatex">\(\alpha\)</span>.</li>
+<li>Obtain all (or a random sample) of permutations of the data from each pair of treatments. For each permutation, compute <span class="arithmatex">\(T_{ij}\)</span> for each <span class="arithmatex">\(ij\)</span> pair.</li>
+<li><span class="arithmatex">\(p\)</span>-value for comparing treatment <span class="arithmatex">\(i, j\)</span> is the fraction of permutations for which <span class="arithmatex">\(|T_{ij}| \geq T_{ij, obs}\)</span></li>
+</ul>
+<p>Tukey's HSD Permutation test</p>
+<ul>
+<li>Obtain all (or a random samplle) of permutation of the data as in the permutation F-test. For each permutation, compute Q.</li>
+<li>Declare {ij} to e significantly different if <span class="arithmatex">\(Q_{obs} \geq q*(\alpha)\)</span></li>
+</ul>
+<h2 id="ordered-alternatives-jt-test">Ordered alternatives: JT test</h2>
+<p><span class="arithmatex">\(H_1: F_1(x) \geq F_2(x) \geq \cdots \geq F_k(x)\)</span></p>
+<p>JT statistic: <span class="arithmatex">\(T=\sum_{i \le j} T_{ij}\)</span>, where <span class="arithmatex">\(T_{ij}\)</span> is Mann-Whitney statistic.</p>
+<p>Larger <span class="arithmatex">\(T\)</span> suppors <span class="arithmatex">\(H1\)</span>.</p>
+<p>JT test: Permutation test based on JT statistic:</p>
+<ul>
+<li>Compute <span class="arithmatex">\(JT_{obs}\)</span> based on the observed data</li>
+<li>Find all (or a random sample) of the permutations of the data and compute <span class="arithmatex">\(JT\)</span> for each permutation</li>
+<li>Compute the <span class="arithmatex">\(p\)</span>-value as the fraction of the permutations for which <span class="arithmatex">\(JT \geq JT_{obs}\)</span></li>
+</ul>
+<h3 id="large-sample-approximation">Large sample approximation</h3>
+<p>Use the expected value and variance of the Mann-Whitney statistic...</p>
+<p>TODO</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../3602/ch6.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Chapter 6: Hypothesis testing" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Chapter 6: Hypothesis testing
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="ch4.html" class="md-footer__link md-footer__link--next" aria-label="Next: Chapter 4: Paired Comparisons and Block Designs" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Chapter 4: Paired Comparisons and Block Designs
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["tabs", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
