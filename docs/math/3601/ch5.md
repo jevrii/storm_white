@@ -83,7 +83,7 @@ $$
 \int^b_a f(x) dx = \sum^n_{j=0} A_j f(x_j)
 $$
 
-Take $f(x) = 1, f(x) = x, f(x) = x^2, \cdots, x_n$. Then solve the system of linear equations. It is equivalent to taking a basis in the linear space of functions, so the functions can be somehow nonlinear (e.g. $f(x) = ae^x + b \cos(\pi x/2)$)
+Take $f(x) = 1, f(x) = x, f(x) = x^2, \cdots, x_n$. Then solve the system of linear equations. It is equivalent to taking a basis in the linear space of functions, so the functions can be "a linear combination of nonlinear functions" (e.g. $f(x) = ae^x + b \cos(\pi x/2)$)
 
 ## Gaussian Quadrature 
 
